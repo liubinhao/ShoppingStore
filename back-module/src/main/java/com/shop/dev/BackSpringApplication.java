@@ -1,11 +1,12 @@
-package com.shop.dev.order;
+package com.shop.dev;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OrderModuleApplication {
+public class BackSpringApplication {
     public static void main(String[] args) {
-        SpringApplication.run(OrderModuleApplication.class);
+        SpringApplication.run(BackSpringApplication.class);
+
     }
 }

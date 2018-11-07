@@ -48,6 +48,9 @@ allprojects {
         implementation('com.auth0:java-jwt:3.4.0')
         implementation('org.springframework.boot:spring-boot-starter-aop')
         implementation('org.springframework.boot:spring-boot-starter-cache')
+        implementation('mysql:mysql-connector-java')
+        implementation('org.springframework.boot:spring-boot-starter-jdbc')
+        implementation('org.springframework.boot:spring-boot-starter-data-jpa')
         implementation('org.springframework.boot:spring-boot-starter-data-redis')
         // https://mvnrepository.com/artifact/redis.clients/jedis
         compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
