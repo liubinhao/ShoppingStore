@@ -1,0 +1,1 @@
+package com.shop.dev.entity;
