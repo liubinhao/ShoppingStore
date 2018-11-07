@@ -1,5 +1,6 @@
 package com.shop.dev.repository.commons;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
