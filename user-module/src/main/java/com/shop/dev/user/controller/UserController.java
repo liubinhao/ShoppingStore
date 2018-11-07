@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 public class UserController {
 
-
     @GetMapping("/home")
     public String home() {
         return "Auth/HomePage";
     }
+
 }

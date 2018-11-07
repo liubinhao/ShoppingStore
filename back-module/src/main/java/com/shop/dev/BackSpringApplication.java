@@ -1,11 +1,12 @@
-package com.shop.dev.search;
+package com.shop.dev;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SearchSpringApplication {
+public class BackSpringApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SearchSpringApplication.class);
+        SpringApplication.run(BackSpringApplication.class);
+
     }
 }

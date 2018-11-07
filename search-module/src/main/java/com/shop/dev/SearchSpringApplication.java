@@ -1,11 +1,11 @@
-package com.shop.dev.cart;
+package com.shop.dev;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CartSpringApplication {
+public class SearchSpringApplication {
     public static void main(String[] args) {
-    SpringApplication.run(CartSpringApplication.class);
+        SpringApplication.run(SearchSpringApplication.class);
     }
 }

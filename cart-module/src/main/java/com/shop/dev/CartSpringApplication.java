@@ -1,12 +1,11 @@
-package com.shop.dev.back;
+package com.shop.dev;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BackSpringApplication {
+public class CartSpringApplication {
     public static void main(String[] args) {
-        SpringApplication.run(BackSpringApplication.class);
-
+    SpringApplication.run(CartSpringApplication.class);
     }
 }
