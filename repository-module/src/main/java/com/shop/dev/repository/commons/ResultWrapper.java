@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,21 +15,14 @@ public class ResultWrapper {
     private int code;
     private String message;
     private Object data;
-    private String token;
-
-    public ResultWrapper(boolean status, int code, String message, Object data) {
-        this.status = status;
-        this.code = code;
-        this.message = message;
-        this.data = data;
-    }
 
     public static ResultWrapper success(Object data){
         return new ResultWrapper(true, 200, "OK", data);
     }
 
-    public static ResultWrapper success(Object data, String token){
-        return new ResultWrapper(true, 200, "OK", data, token);
+    public static <T> ResultWrapper success(int totalCount, List<T> items) {
+        Pageable<T> page = new Pageable<>(totalCount, items);
+        return success(page);
     }
 
     public static ResultWrapper error(int code, String message){
