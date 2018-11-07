@@ -1,4 +1,4 @@
-package com.shop.dev.repository.commons;
+package com.shop.dev.commons;
 
 
 import lombok.AllArgsConstructor;
