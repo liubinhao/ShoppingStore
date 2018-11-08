@@ -5,4 +5,8 @@ dependencies {
     implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testCompile("junit:junit")
+
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
+    compile group: 'org.hibernate', name: 'hibernate-validator', version: '6.0.13.Final'
+
 }
