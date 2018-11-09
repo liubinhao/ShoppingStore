@@ -10,7 +10,6 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  * 创建事件: 2018/11/5
  */
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-//服务注册中心注解
 @EnableEurekaServer
 public class EurekaServerApplication {
 
