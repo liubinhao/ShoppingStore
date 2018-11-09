@@ -1,5 +1,6 @@
 package com.shop.dev.entity;
 
+import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,10 +15,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "tb_item")
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +30,6 @@ public class Item {
     private String image;
     private Timestamp created;
     private  Timestamp updated;
-
-
 
 
 }
