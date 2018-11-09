@@ -1,7 +1,5 @@
 package com.shop.dev.service;
 
-import com.shop.dev.entity.User;
-
 /**
  * @ClassName UserService
  * @Author 刘树青

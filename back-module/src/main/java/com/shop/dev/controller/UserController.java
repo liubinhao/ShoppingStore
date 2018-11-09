@@ -1,5 +1,6 @@
 package com.shop.dev.controller;
 
+import com.shop.dev.commons.ResultWrapper;
 import com.shop.dev.entity.User;
 import com.shop.dev.service.UserService;
 import org.springframework.validation.annotation.Validated;
@@ -23,7 +24,12 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login.do")
-    public boolean login(@RequestBody @Validated User user) {
-        return this.userService.isLogin(user.getUsername(), user.getPassword());
+    public ResultWrapper login(@RequestBody @Validated User user) {
+        try {
+            boolean b = this.userService.isLogin(user.getUsername(), user.getPassword());
+            return ResultWrapper.success(b);
+        } catch (Exception e) {
+            return ResultWrapper.success(false);
+        }
     }
 }

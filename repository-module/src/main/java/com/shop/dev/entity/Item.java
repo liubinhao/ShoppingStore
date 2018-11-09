@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -19,7 +20,7 @@ import java.util.Objects;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Item {
+public class Item implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long itemId;
@@ -33,5 +34,9 @@ public class Item {
     private byte status;
     private Timestamp created;
     private Timestamp updated;
+
+    @OneToOne
+    @JoinColumn(name = "cid", referencedColumnName = "id", insertable = false, updatable = false)
+    private ItemCat itemCat;
 
 }

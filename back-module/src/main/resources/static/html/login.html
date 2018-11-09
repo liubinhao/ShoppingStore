@@ -47,9 +47,10 @@
             data: JSON.stringify({
                 'username': username,
                 'password': password
-            })
+            }),
+            dataType: 'json'
         };
-        if (username == '' || password == '') {
+        if (username === '' || password === '') {
             $.messager.alert('错误', "用户名密码不正确！");
         } else {
             $.ajax(settings).done(requestFinished);
@@ -64,7 +65,7 @@
     });
 
     function requestFinished(resp) {
-        if (resp) {
+        if (resp.data) {
             window.location.href = "/html/index.html";
         } else {
             $.messager.alert('错误', "用户名密码不正确！");
