@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>item-add</title>
-    <link href="/static/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" charset="utf-8" src="/static/js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/static/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
 </head>
 <body>
+<link href="../js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="../js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/kindeditor-4.1.10/lang/zh_CN.js"></script>
 <div style="padding:10px 10px 10px 10px">
     <form id="itemAddForm" class="itemForm" method="post">
         <table cellpadding="5">
             <tr>
                 <td>商品类目:</td>
                 <td>
-                    <a href="javascript:void(0)" class="easyui-linkbutton selectItemCat">选择类目</a>
-                    <!--<a href="/itemCat/findItemCats" class="easyui-linkbutton selectItemCat">选择类目</a>-->
+                    <a id="cate" href="javascript:void(0)" class="easyui-linkbutton selectItemCat">选择类目</a>
+                    <!--<select id="customCombobox" style="width: 280px"></select>-->
                     <input type="hidden" name="cid" style="width: 280px;"></input>
                 </td>
             </tr>
@@ -58,7 +58,9 @@
             <tr>
                 <td>商品描述:</td>
                 <td>
-                    <textarea style="width:800px;height:300px;visibility:hidden;" name="desc"></textarea>
+                    <label>
+                        <textarea style="width:800px;height:300px;visibility:hidden;" name="desc"></textarea>
+                    </label>
                 </td>
             </tr>
             <tr class="params hide">
@@ -76,6 +78,21 @@
     </div>
 </div>
 <script type="text/javascript">
+
+    // var menu = $("#customCombobox").append("<option value='1'>选择类目</option>");
+    //
+    // $('#customCombobox').focus(function () {
+    //     $.get('/itemCat/findItemCats', requestFinished);
+    // });
+
+    // function requestFinished(resp) {
+    //     var arr = resp.data.splice(',');
+    //     for (let i = 0; i < arr.length; i++) {
+    //         var option = $("<option value='1'></option>").text(arr[i]);
+    //         $("#customCombobox").append(option);
+    //     }
+    // }
+
     var itemAddEditor;
     //页面初始化完毕后执行此方法
     $(function () {

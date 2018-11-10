@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface ItemCatRepository extends JpaRepository<ItemCat, Long> {
 
-    @Query("select name from ItemCat where parentId=?1")
+    @Query("select id,name from ItemCat where parentId=?1")
     List<ItemCat> findByParentId(Long parentId);
 }
