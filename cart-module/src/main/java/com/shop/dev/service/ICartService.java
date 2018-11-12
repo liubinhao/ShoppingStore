@@ -1,15 +1,17 @@
 package com.shop.dev.service;
 
 import com.shop.dev.controller.param.ItemParam;
-import com.shop.dev.entity.Item;
 
 import java.util.List;
-import java.util.Map;
 
 public interface ICartService {
 
-    ItemParam addItem(ItemParam itemParam);
+    void addItem(ItemParam itemParam);
 
     List<?> showItemInformation(Long userId);
+
+    void removeItem(Long itemId);
+
+    void updateItemQuantity(ItemParam itemParam);
 
 }

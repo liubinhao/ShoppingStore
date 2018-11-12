@@ -22,7 +22,7 @@
 		<!--search end-->
 		<div id="my360buy-2013">
 			<dl>
-				<dt class="ld"><a href="my/my-info.html" clstag="homepage|keycount|home2012|04a">我的shop</a><b></b></dt>
+				<dt class="ld"><a href="/my/my-info.html" clstag="homepage|keycount|home2012|04a">我的shop</a><b></b></dt>
 				<dd>
 					<div class="loading-style1"><b></b>加载中，请稍候...</div>
 				</dd>
