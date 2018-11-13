@@ -1,13 +1,15 @@
 package com.shop.dev.controller;
 
-import com.shop.dev.commons.ResultWrapper;
+import com.shop.dev.controller.response_web.ItemResult;
 import com.shop.dev.entity.Item;
+import com.shop.dev.entity.ItemDesc;
+import com.shop.dev.service.ItemDescService;
 import com.shop.dev.service.ItemService;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -21,12 +23,14 @@ import java.util.Map;
  * @Version 1.0
  */
 @RestController
-@RequestMapping("/item")
 public class ItemController {
     @Resource
     private ItemService itemService;
 
-    @GetMapping("/list")
+    @Resource
+    private ItemDescService itemDescService;
+
+    @GetMapping("/item/list")
     public Map findItems(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int rows) {
         // 获取到分页数据
         Page<Item> items = this.itemService.findItems(page - 1, rows);
@@ -39,4 +43,34 @@ public class ItemController {
         map.put("rows", items.getContent());
         return map;
     }
+
+    /**
+     * @Author 刘树青 上下架及其删除
+     * @Date 2018/11/12 15:50
+     * @param: [ids, method]
+     * return: com.shop.dev.controller.response_web.ItemResult
+     */
+    @RequestMapping("/rest/item/{method}")
+    public ItemResult updateItemStatus(@RequestParam(value = "ids") List<Long> ids, @PathVariable String method) {
+        return this.itemService.updateItemStatus(ids, method);
+    }
+
+//    @RequestMapping("/rest/item/query/item/desc/{id}")
+//    public ItemResult getItemDesc(@PathVariable("id") long id) {
+//        ItemDesc itemdesc = this.itemDescService.findByitemId(id);
+//        return new ItemResult(200, "ok", itemdesc);
+//    }
+//
+//    @CacheEvict(value = "itemService", allEntries = true)
+//    @Transactional
+//    @RequestMapping("/rest/item/update")
+//    public ItemResult updateItemWithDesc(Item item, String desc) {
+//        Item item1 = this.itemService.updateItem(item);
+//        ItemDesc itemDesc = new ItemDesc();
+//        itemDesc.setItemId(item1.getId());
+//        itemDesc.setItemDesc(desc);
+//        ItemDesc itemDesc1 = this.itemDescService.updateItemDesc(itemDesc);
+//        return new ItemResult(200, "ok", null);
+//    }
+
 }

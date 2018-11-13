@@ -1,11 +1,13 @@
 package com.shop.dev.service;
 
 import com.shop.dev.back_respository.ItemCatRepository;
+import com.shop.dev.controller.response_web.EasyUIItemCat;
 import com.shop.dev.entity.ItemCat;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +23,17 @@ public class ItemCatServiceImpl implements ItemCatService {
 
     @Cacheable(value = "itemCatService")
     @Override
-    public List<ItemCat> findByParentId(Long parentId) {
-        return this.itemCatRepository.findByParentId(parentId);
+    public List<EasyUIItemCat> findItemCat(long itemCatId) {
+        List<EasyUIItemCat> list = new ArrayList<>();
+
+        List<ItemCat> itemCats = this.itemCatRepository.findItemCats(itemCatId);
+        for (ItemCat itemCat : itemCats) {
+            EasyUIItemCat easyUIItemCat = new EasyUIItemCat();
+            easyUIItemCat.setId(itemCat.getId());
+            easyUIItemCat.setText(itemCat.getName());
+            easyUIItemCat.setState(itemCat.getIsParent() == 0 ? "closed" : "open");
+            list.add(easyUIItemCat);
+        }
+        return list;
     }
 }

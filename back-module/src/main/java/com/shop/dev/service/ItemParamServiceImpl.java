@@ -1,11 +1,14 @@
 package com.shop.dev.service;
 
 import com.shop.dev.back_respository.ItemParamRepository;
+import com.shop.dev.controller.response_web.ItemResult;
 import com.shop.dev.entity.ItemParam;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -32,5 +35,13 @@ public class ItemParamServiceImpl implements ItemParamService {
     @Override
     public List<ItemParam> findItemParams() {
         return this.itemParamRepository.findAll();
+    }
+
+    @Transactional
+    @CacheEvict(value = "itemParamService", allEntries = true)
+    @Override
+    public ItemResult deleteItemParam(List<Long> ids) {
+        this.itemParamRepository.deleteByIds(ids);
+        return new ItemResult(200, "ok", null);
     }
 }

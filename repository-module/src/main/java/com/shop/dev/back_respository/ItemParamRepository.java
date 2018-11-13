@@ -2,6 +2,11 @@ package com.shop.dev.back_respository;
 
 import com.shop.dev.entity.ItemParam;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 /**
  * @ClassName ItemParamRepository
@@ -11,4 +16,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface ItemParamRepository extends JpaRepository<ItemParam, Long> {
 
+    @Modifying
+    @Query("delete from ItemParam where id in :ids")
+    void deleteByIds(@Param("ids") List<Long> ids);
 }

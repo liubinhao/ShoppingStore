@@ -1,6 +1,6 @@
 package com.shop.dev.service;
 
-import com.shop.dev.entity.ItemCat;
+import com.shop.dev.controller.response_web.EasyUIItemCat;
 
 import java.util.List;
 
@@ -11,5 +11,6 @@ import java.util.List;
  * @Version 1.0
  */
 public interface ItemCatService {
-    List<ItemCat> findByParentId(Long parentId);
+
+    List<EasyUIItemCat> findItemCat(long itemCatId);
 }

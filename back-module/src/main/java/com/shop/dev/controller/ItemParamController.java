@@ -1,5 +1,6 @@
 package com.shop.dev.controller;
 
+import com.shop.dev.controller.response_web.ItemResult;
 import com.shop.dev.entity.ItemParam;
 import com.shop.dev.service.ItemParamService;
 import org.springframework.data.domain.Page;
@@ -29,11 +30,16 @@ public class ItemParamController {
     @GetMapping("/list")
     public Map findItemParams(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int rows) {
         // 遇到的坑:在PageRequest类中,计算的页码是从0开始的,而前端最小的页面则是1
-        Page<ItemParam> itemParams = this.itemParamService.findItemParams(page-1, rows);
+        Page<ItemParam> itemParams = this.itemParamService.findItemParams(page - 1, rows);
         List<ItemParam> itemParamList = this.itemParamService.findItemParams();
         Map map = new HashMap();
         map.put("total", itemParamList.size());
         map.put("rows", itemParams.getContent());
         return map;
+    }
+
+    @RequestMapping("/delete")
+    public ItemResult deleteItemParam(@RequestParam("ids") List<Long> ids) {
+        return itemParamService.deleteItemParam(ids);
     }
 }

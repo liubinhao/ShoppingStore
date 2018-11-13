@@ -15,7 +15,6 @@
                 <td>商品类目:</td>
                 <td>
                     <a id="cate" href="javascript:void(0)" class="easyui-linkbutton selectItemCat">选择类目</a>
-                    <!--<select id="customCombobox" style="width: 280px"></select>-->
                     <input type="hidden" name="cid" style="width: 280px;"></input>
                 </td>
             </tr>
@@ -78,20 +77,6 @@
     </div>
 </div>
 <script type="text/javascript">
-
-    // var menu = $("#customCombobox").append("<option value='1'>选择类目</option>");
-    //
-    // $('#customCombobox').focus(function () {
-    //     $.get('/itemCat/findItemCats', requestFinished);
-    // });
-
-    // function requestFinished(resp) {
-    //     var arr = resp.data.splice(',');
-    //     for (let i = 0; i < arr.length; i++) {
-    //         var option = $("<option value='1'></option>").text(arr[i]);
-    //         $("#customCombobox").append(option);
-    //     }
-    // }
 
     var itemAddEditor;
     //页面初始化完毕后执行此方法

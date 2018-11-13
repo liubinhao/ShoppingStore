@@ -21,9 +21,11 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Item implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long itemId;
+    @Column(name = "item_id")
+    private long id;
     private String title;
     private String sellPoint;
     private long price;
@@ -38,5 +40,9 @@ public class Item implements Serializable {
     @OneToOne
     @JoinColumn(name = "cid", referencedColumnName = "id", insertable = false, updatable = false)
     private ItemCat itemCat;
+
+    @OneToOne
+    @JoinColumn(name = "itemId", referencedColumnName = "itemId", insertable = false, updatable = false)
+    private ItemDesc itemDesc;
 
 }

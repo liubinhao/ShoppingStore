@@ -1,5 +1,6 @@
 package com.shop.dev.service;
 
+import com.shop.dev.controller.response_web.ItemResult;
 import com.shop.dev.entity.Item;
 import org.springframework.data.domain.Page;
 
@@ -15,4 +16,9 @@ public interface ItemService {
     Page<Item> findItems(int page, int rows);
 
     List<Item> findItems();
+
+    // 上下架及其删除
+    ItemResult updateItemStatus(List<Long> itemIds, String method);
+
+//    Item updateItem(Item item);
 }

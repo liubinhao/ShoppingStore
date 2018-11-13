@@ -1,12 +1,13 @@
 package com.shop.dev.controller;
 
-import com.shop.dev.commons.ResultWrapper;
+import com.shop.dev.controller.response_web.EasyUIItemCat;
 import com.shop.dev.service.ItemCatService;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @ClassName ItemCatController
@@ -15,13 +16,13 @@ import javax.annotation.Resource;
  * @Version 1.0
  */
 @RestController
-@RequestMapping("/itemCat")
+@RequestMapping("/item/cat")
 public class ItemCatController {
     @Resource
     private ItemCatService itemCatService;
 
-    @GetMapping("/findItemCats")
-    public ResultWrapper findItemCats(Long parentId) {
-        return ResultWrapper.success(this.itemCatService.findByParentId(0L));
+    @RequestMapping("/list")
+    public List<EasyUIItemCat> findItemCats(@RequestParam(value = "id", defaultValue = "0") long itemCatId) {
+        return itemCatService.findItemCat(itemCatId);
     }
 }
