@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * @ClassName ItemResult
+ * @ClassName ShopResult
  * @Author 刘树青
  * @Date 2018/11/12 10:32
  * @Version 1.0
@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ItemResult implements Serializable {
+public class ShopResult implements Serializable {
     private Integer status;
     private String msg;
     private Object data;

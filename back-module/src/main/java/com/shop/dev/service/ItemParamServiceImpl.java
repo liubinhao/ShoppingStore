@@ -1,7 +1,7 @@
 package com.shop.dev.service;
 
 import com.shop.dev.back_respository.ItemParamRepository;
-import com.shop.dev.controller.response_web.ItemResult;
+import com.shop.dev.controller.response_web.ShopResult;
 import com.shop.dev.entity.ItemParam;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -40,8 +40,8 @@ public class ItemParamServiceImpl implements ItemParamService {
     @Transactional
     @CacheEvict(value = "itemParamService", allEntries = true)
     @Override
-    public ItemResult deleteItemParam(List<Long> ids) {
+    public ShopResult deleteItemParam(List<Long> ids) {
         this.itemParamRepository.deleteByIds(ids);
-        return new ItemResult(200, "ok", null);
+        return new ShopResult(200, "ok", null);
     }
 }

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * @ClassName EasyUIItemCat
+ * @ClassName EasyUIResult
  * @Author 刘树青
  * @Date 2018/11/10 17:08
  * @Version 1.0
@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EasyUIItemCat implements Serializable {
+public class EasyUIResult implements Serializable {
     private long id;
     private String text;
     private String state;

@@ -1,10 +1,9 @@
 package com.shop.dev.service;
 
 import com.shop.dev.back_respository.ItemRepository;
-import com.shop.dev.controller.response_web.ItemResult;
+import com.shop.dev.controller.response_web.ShopResult;
 import com.shop.dev.entity.Item;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -42,12 +41,12 @@ public class ItemServiceImpl implements ItemService {
      * @Author 刘树青 上下架及其删除
      * @Date 2018/11/12 15:00
      * @param: [itemIds, method]
-     * return: com.shop.dev.controller.response_web.ItemResult
+     * return: com.shop.dev.controller.response_web.ShopResult
      */
     @Transactional
     @CacheEvict(value = "itemService", allEntries = true)
     @Override
-    public ItemResult updateItemStatus(List<Long> itemIds, String method) {
+    public ShopResult updateItemStatus(List<Long> itemIds, String method) {
         if (method.equals("reshelf")) {
             // 正常，更新status=3即可
             this.itemRepository.updateByItemIds((byte) 1, itemIds);
@@ -58,7 +57,7 @@ public class ItemServiceImpl implements ItemService {
             // 删除，更新status=3即可
             this.itemRepository.updateByItemIds((byte) 3, itemIds);
         }
-        return new ItemResult(200, "ok", null);
+        return new ShopResult(200, "ok", null);
     }
 
 //    /**

@@ -1,6 +1,6 @@
 package com.shop.dev.service;
 
-import com.shop.dev.controller.response_web.ItemResult;
+import com.shop.dev.controller.response_web.ShopResult;
 import com.shop.dev.entity.Item;
 import org.springframework.data.domain.Page;
 
@@ -18,7 +18,7 @@ public interface ItemService {
     List<Item> findItems();
 
     // 上下架及其删除
-    ItemResult updateItemStatus(List<Long> itemIds, String method);
+    ShopResult updateItemStatus(List<Long> itemIds, String method);
 
 //    Item updateItem(Item item);
 }

@@ -1,6 +1,6 @@
 package com.shop.dev.service;
 
-import com.shop.dev.controller.response_web.EasyUIItemCat;
+import com.shop.dev.controller.response_web.EasyUIResult;
 
 import java.util.List;
 
@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface ItemCatService {
 
-    List<EasyUIItemCat> findItemCat(long itemCatId);
+    List<EasyUIResult> findItemCat(long itemCatId);
 }

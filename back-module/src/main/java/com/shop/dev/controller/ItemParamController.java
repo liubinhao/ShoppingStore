@@ -1,6 +1,6 @@
 package com.shop.dev.controller;
 
-import com.shop.dev.controller.response_web.ItemResult;
+import com.shop.dev.controller.response_web.ShopResult;
 import com.shop.dev.entity.ItemParam;
 import com.shop.dev.service.ItemParamService;
 import org.springframework.data.domain.Page;
@@ -39,7 +39,7 @@ public class ItemParamController {
     }
 
     @RequestMapping("/delete")
-    public ItemResult deleteItemParam(@RequestParam("ids") List<Long> ids) {
+    public ShopResult deleteItemParam(@RequestParam("ids") List<Long> ids) {
         return itemParamService.deleteItemParam(ids);
     }
 }

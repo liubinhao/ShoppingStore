@@ -1,14 +1,10 @@
 package com.shop.dev.controller;
 
-import com.shop.dev.controller.response_web.ItemResult;
+import com.shop.dev.controller.response_web.ShopResult;
 import com.shop.dev.entity.Item;
-import com.shop.dev.entity.ItemDesc;
 import com.shop.dev.service.ItemDescService;
 import com.shop.dev.service.ItemService;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.data.domain.Page;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -48,29 +44,29 @@ public class ItemController {
      * @Author 刘树青 上下架及其删除
      * @Date 2018/11/12 15:50
      * @param: [ids, method]
-     * return: com.shop.dev.controller.response_web.ItemResult
+     * return: com.shop.dev.controller.response_web.ShopResult
      */
     @RequestMapping("/rest/item/{method}")
-    public ItemResult updateItemStatus(@RequestParam(value = "ids") List<Long> ids, @PathVariable String method) {
+    public ShopResult updateItemStatus(@RequestParam(value = "ids") List<Long> ids, @PathVariable String method) {
         return this.itemService.updateItemStatus(ids, method);
     }
 
 //    @RequestMapping("/rest/item/query/item/desc/{id}")
-//    public ItemResult getItemDesc(@PathVariable("id") long id) {
+//    public ShopResult getItemDesc(@PathVariable("id") long id) {
 //        ItemDesc itemdesc = this.itemDescService.findByitemId(id);
-//        return new ItemResult(200, "ok", itemdesc);
+//        return new ShopResult(200, "ok", itemdesc);
 //    }
 //
 //    @CacheEvict(value = "itemService", allEntries = true)
 //    @Transactional
 //    @RequestMapping("/rest/item/update")
-//    public ItemResult updateItemWithDesc(Item item, String desc) {
+//    public ShopResult updateItemWithDesc(Item item, String desc) {
 //        Item item1 = this.itemService.updateItem(item);
 //        ItemDesc itemDesc = new ItemDesc();
 //        itemDesc.setItemId(item1.getId());
 //        itemDesc.setItemDesc(desc);
 //        ItemDesc itemDesc1 = this.itemDescService.updateItemDesc(itemDesc);
-//        return new ItemResult(200, "ok", null);
+//        return new ShopResult(200, "ok", null);
 //    }
 
 }

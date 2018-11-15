@@ -1,6 +1,6 @@
 package com.shop.dev.service;
 
-import com.shop.dev.controller.response_web.ItemResult;
+import com.shop.dev.controller.response_web.ShopResult;
 import com.shop.dev.entity.ItemParam;
 import org.springframework.data.domain.Page;
 
@@ -18,5 +18,5 @@ public interface ItemParamService {
 
     List<ItemParam> findItemParams();
 
-    ItemResult deleteItemParam(List<Long> ids);
+    ShopResult deleteItemParam(List<Long> ids);
 }
