@@ -1,5 +1,6 @@
 package com.shop.dev.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,8 @@ import java.util.Objects;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+// 该注解用于取消 hibernate 的懒加载,使代理对象生效
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
 public class ItemDesc implements Serializable {
     @Id
     private long itemId;

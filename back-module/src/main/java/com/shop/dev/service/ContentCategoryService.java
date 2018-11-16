@@ -1,6 +1,6 @@
 package com.shop.dev.service;
 
-import com.shop.dev.controller.response_web.EasyUIResult;
+import com.shop.dev.controller.response_web.EasyUITreeNode;
 import com.shop.dev.controller.response_web.ShopResult;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface ContentCategoryService {
 
-    List<EasyUIResult> findContentCategories(long parentId);
+    List<EasyUITreeNode> findContentCategories(long parentId);
 
     //添加内容分类
     ShopResult insertContentCategory(long parentId, String name);

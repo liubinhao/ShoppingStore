@@ -1,7 +1,7 @@
 package com.shop.dev.service;
 
 import com.shop.dev.back_respository.ItemCatRepository;
-import com.shop.dev.controller.response_web.EasyUIResult;
+import com.shop.dev.controller.response_web.EasyUITreeNode;
 import com.shop.dev.entity.ItemCat;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -23,16 +23,16 @@ public class ItemCatServiceImpl implements ItemCatService {
 
     @Cacheable(value = "itemCatService")
     @Override
-    public List<EasyUIResult> findItemCat(long itemCatId) {
-        List<EasyUIResult> list = new ArrayList<>();
+    public List<EasyUITreeNode> findItemCat(long itemCatId) {
+        List<EasyUITreeNode> list = new ArrayList<>();
 
-        List<ItemCat> itemCats = this.itemCatRepository.findItemCats(itemCatId);
+        List<ItemCat> itemCats = this.itemCatRepository.findByParentId(itemCatId);
         for (ItemCat itemCat : itemCats) {
-            EasyUIResult easyUIResult = new EasyUIResult();
-            easyUIResult.setId(itemCat.getId());
-            easyUIResult.setText(itemCat.getName());
-            easyUIResult.setState(itemCat.getIsParent() == 0 ? "closed" : "open");
-            list.add(easyUIResult);
+            EasyUITreeNode easyUITreeNode = new EasyUITreeNode();
+            easyUITreeNode.setId(itemCat.getId());
+            easyUITreeNode.setText(itemCat.getName());
+            easyUITreeNode.setState(itemCat.getIsParent() == 1 ? "closed" : "open");
+            list.add(easyUITreeNode);
         }
         return list;
     }

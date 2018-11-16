@@ -1,6 +1,6 @@
 package com.shop.dev.controller;
 
-import com.shop.dev.controller.response_web.EasyUIResult;
+import com.shop.dev.controller.response_web.EasyUITreeNode;
 import com.shop.dev.controller.response_web.ShopResult;
 import com.shop.dev.service.ContentCategoryService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +22,7 @@ public class ContentCategoryController {
     private ContentCategoryService contentCategoryService;
 
     @RequestMapping("/content/category/list")
-    public List<EasyUIResult> findContentCategories(@RequestParam(name = "id", defaultValue = "0") long parentId) {
+    public List<EasyUITreeNode> findContentCategories(@RequestParam(name = "id", defaultValue = "0") long parentId) {
         return this.contentCategoryService.findContentCategories(parentId);
     }
 

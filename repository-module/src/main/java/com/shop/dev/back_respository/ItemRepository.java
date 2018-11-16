@@ -20,5 +20,4 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     @Query("update Item set status= :status where id in :ids")
     int updateByItemIds(@Param("status") byte status, @Param("ids") List<Long> ids);
 
-
 }

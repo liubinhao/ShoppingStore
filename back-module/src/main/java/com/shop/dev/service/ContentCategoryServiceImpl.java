@@ -1,7 +1,7 @@
 package com.shop.dev.service;
 
 import com.shop.dev.back_respository.ContentCategoryRepository;
-import com.shop.dev.controller.response_web.EasyUIResult;
+import com.shop.dev.controller.response_web.EasyUITreeNode;
 import com.shop.dev.controller.response_web.ShopResult;
 import com.shop.dev.entity.ContentCategory;
 import org.springframework.cache.annotation.CacheEvict;
@@ -27,19 +27,19 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 
     @Cacheable(value = "contentCategoryService")
     @Override
-    public List<EasyUIResult> findContentCategories(long parentId) {
+    public List<EasyUITreeNode> findContentCategories(long parentId) {
         List<ContentCategory> contentCategories = this.contentCategoryRepository.findByParentId(parentId);
 
-        List<EasyUIResult> easyUIResultList = new ArrayList<>();
+        List<EasyUITreeNode> easyUITreeNodeList = new ArrayList<>();
 
         for (ContentCategory contentCategory : contentCategories) {
-            EasyUIResult easyUIResult = new EasyUIResult();
-            easyUIResult.setId(contentCategory.getId());
-            easyUIResult.setText(contentCategory.getName());
-            easyUIResult.setState(contentCategory.getIsParent() == 1 ? "closed" : "open");
-            easyUIResultList.add(easyUIResult);
+            EasyUITreeNode easyUITreeNode = new EasyUITreeNode();
+            easyUITreeNode.setId(contentCategory.getId());
+            easyUITreeNode.setText(contentCategory.getName());
+            easyUITreeNode.setState(contentCategory.getIsParent() == 1 ? "closed" : "open");
+            easyUITreeNodeList.add(easyUITreeNode);
         }
-        return easyUIResultList;
+        return easyUITreeNodeList;
     }
 
     // 添加

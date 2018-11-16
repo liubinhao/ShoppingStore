@@ -37,7 +37,7 @@ public class FastDFSTest {
     // 测试FastDFSUtils工具类
     @Test
     public void imageTest() {
-        String s = FastDFSUtils.imageHandler("fastdfs.properties", "C:\\Users\\Administrator\\Downloads\\photo-1466854076813-4aa9ac0fc347.jpg");
+        String s = FastDFSUtils.imageHandler("fastdfs.properties", "C:\\Users\\Administrator\\Downloads\\photo-1466854076813-4aa9ac0fc347.jpg","jpg");
         System.out.println(s);
     }
 

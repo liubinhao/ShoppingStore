@@ -14,10 +14,6 @@ import java.util.List;
  */
 public interface ItemCatRepository extends JpaRepository<ItemCat, Long> {
 
-    @Query(value = "select distinct tic1.*\n" +
-            "from tb_item_cat tic1,\n" +
-            "     tb_item_cat tic2\n" +
-            "where tic1.parent_id = tic2.is_parent\n" +
-            "  and tic1.parent_id = ?1", nativeQuery = true)
-    List<ItemCat> findItemCats(long parentId);
+    @Query(value = "select * from shop.tb_item_cat where parent_id=?1 and status=1", nativeQuery = true)
+    List<ItemCat> findByParentId(long parentId);
 }

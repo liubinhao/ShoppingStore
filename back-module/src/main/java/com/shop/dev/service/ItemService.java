@@ -2,6 +2,7 @@ package com.shop.dev.service;
 
 import com.shop.dev.controller.response_web.ShopResult;
 import com.shop.dev.entity.Item;
+import com.shop.dev.entity.ItemDesc;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -20,5 +21,12 @@ public interface ItemService {
     // 上下架及其删除
     ShopResult updateItemStatus(List<Long> itemIds, String method);
 
-//    Item updateItem(Item item);
+    // 添加商品
+    ShopResult addItem(Item item, String itemDesc);
+
+    // 根据id查询商品描述
+    ShopResult getItemDesc(Long id);
+
+    // 更新商品
+    ShopResult updateItem(Item item, String itemDesc);
 }
