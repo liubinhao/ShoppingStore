@@ -47,10 +47,11 @@ public class ItemServiceImpl implements ItemService {
         PageRequest pageable = PageRequest.of(page - 1, rows);
         Page<Item> items = this.itemRepository.findAll(pageable);
         // 拿到数据总数
-        List<Item> itemList = this.itemRepository.findAll();
+        long count = this.itemRepository.findByCount();
+
         // 返回给前端所需数据
         Map map = new HashMap();
-        map.put("total", itemList.size());
+        map.put("total", count);
         map.put("rows", items.getContent());
         return map;
     }

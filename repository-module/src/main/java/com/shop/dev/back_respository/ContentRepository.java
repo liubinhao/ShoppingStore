@@ -20,7 +20,8 @@ public interface ContentRepository extends JpaRepository<Content, Long> {
 
     Page<Content> findByCategoryId(Long categoryId, Pageable pageable);
 
-    List<Content> findContentsByCategoryId(Long categoryId);
+    @Query(value = "select count(*) from tb_content where category_id=?1", nativeQuery = true)
+    long findByCount(Long categoryId);
 
     @Modifying
     @Query("delete from Content where id in :ids")

@@ -21,4 +21,7 @@ public interface ItemParamRepository extends JpaRepository<ItemParam, Long> {
     void deleteByIds(@Param("ids") List<Long> ids);
 
     ItemParam findByItemCatId(long itemCatId);
+
+    @Query(value = "select count(*) from tb_item_param", nativeQuery = true)
+    long findByCount();
 }

@@ -36,9 +36,9 @@ public class ItemParamServiceImpl implements ItemParamService {
         // 遇到的坑:在PageRequest类中,计算的页码是从0开始的,而前端最小的页面则是1
         Pageable pageable = PageRequest.of(page - 1, rows);
         Page<ItemParam> itemParams = this.itemParamRepository.findAll(pageable);
-        List<ItemParam> itemParamList = this.itemParamRepository.findAll();
+        long total = this.itemParamRepository.findByCount();
         Map map = new HashMap();
-        map.put("total", itemParamList.size());
+        map.put("total", total);
         map.put("rows", itemParams.getContent());
         return map;
     }

@@ -14,9 +14,6 @@ import java.util.Map;
  * @Version 1.0
  */
 public interface ItemService {
-//    Page<Item> findItems(int page, int rows);
-
-//    List<Item> findItems();
 
     Map findItems(int page, int rows);
 

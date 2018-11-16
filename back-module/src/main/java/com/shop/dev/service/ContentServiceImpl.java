@@ -34,10 +34,10 @@ public class ContentServiceImpl implements ContentService {
     public Map findContents(long categoryId, int page, int rows) {
         Pageable pageable = PageRequest.of(page, rows);
         Page<Content> contents = this.contentRepository.findByCategoryId(categoryId, pageable);
-        List<Content> contentList = this.contentRepository.findContentsByCategoryId(categoryId);
+        long total = this.contentRepository.findByCount(categoryId);
 
         Map map = new HashMap();
-        map.put("total", contentList.size());
+        map.put("total", total);
         map.put("rows", contents.getContent());
         return map;
     }

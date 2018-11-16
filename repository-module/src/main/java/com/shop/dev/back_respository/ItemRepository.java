@@ -16,6 +16,9 @@ import java.util.List;
  */
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
+    @Query(value = "select count(*) from shop.tb_item", nativeQuery = true)
+    long findByCount();
+
     @Modifying
     @Query("update Item set status= :status where id in :ids")
     int updateByItemIds(@Param("status") byte status, @Param("ids") List<Long> ids);
