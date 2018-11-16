@@ -1,16 +1,10 @@
 package com.shop.dev.controller;
 
 import com.shop.dev.result_wrapper.ShopResult;
-import com.shop.dev.entity.ItemParam;
 import com.shop.dev.service.ItemParamService;
-import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,19 +20,30 @@ public class ItemParamController {
     @Resource
     private ItemParamService itemParamService;
 
+    // 查
     @GetMapping("/item/param/list")
     public Map findItemParams(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int rows) {
-        // 遇到的坑:在PageRequest类中,计算的页码是从0开始的,而前端最小的页面则是1
-        Page<ItemParam> itemParams = this.itemParamService.findItemParams(page - 1, rows);
-        List<ItemParam> itemParamList = this.itemParamService.findItemParams();
-        Map map = new HashMap();
-        map.put("total", itemParamList.size());
-        map.put("rows", itemParams.getContent());
-        return map;
+        return this.itemParamService.findItemParams(page, rows);
     }
 
+    // 删
     @RequestMapping("/item/param/delete")
     public ShopResult deleteItemParam(@RequestParam("ids") List<Long> ids) {
         return itemParamService.deleteItemParam(ids);
     }
+
+
+    // 通过商品类目id获取规格参数模板
+    @RequestMapping("/item/param/query/itemcatid/{cid}")
+    public ShopResult getItemCatByCid(@PathVariable Long cid) {
+        return this.itemParamService.getItemCatByCid(cid);
+    }
+
+
+    // 插入规格参数模板
+    @RequestMapping("/item/param/save/{cid}")
+    public ShopResult insertItemParam(@PathVariable Long cid, String paramData) {
+        return this.itemParamService.insertItemParam(cid, paramData);
+    }
+
 }

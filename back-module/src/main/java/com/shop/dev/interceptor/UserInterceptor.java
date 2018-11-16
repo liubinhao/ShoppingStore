@@ -1,10 +1,13 @@
 package com.shop.dev.interceptor;
 
+import com.shop.dev.entity.User;
+import com.shop.dev.exception.MyException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @ClassName UserInterceptor
@@ -14,8 +17,15 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Component
 public class UserInterceptor implements HandlerInterceptor {
-//    @Override
-//    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-//
-//    }
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            return true;
+        } else {
+            throw new MyException("网页找不到");
+        }
+    }
 }

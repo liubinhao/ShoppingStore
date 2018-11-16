@@ -22,18 +22,10 @@ public class ItemController {
     @Resource
     private ItemService itemService;
 
+    // 查询商品信息
     @GetMapping("/item/list")
     public Map findItems(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int rows) {
-        // 获取到分页数据
-        Page<Item> items = this.itemService.findItems(page - 1, rows);
-        // 拿到数据总数
-        List<Item> itemList = this.itemService.findItems();
-        Integer total = itemList.size();
-        // 返回给前端所需数据
-        Map map = new HashMap();
-        map.put("total", total);
-        map.put("rows", items.getContent());
-        return map;
+        return this.itemService.findItems(page, rows);
     }
 
     /**
@@ -50,8 +42,8 @@ public class ItemController {
 
     // 添加商品
     @RequestMapping("/item/save")
-    public ShopResult saveItem(Item item, String desc) {
-        return itemService.addItem(item, desc);
+    public ShopResult saveItem(Item item, String desc, String itemParams) {
+        return itemService.addItem(item, desc, itemParams);
     }
 
 
@@ -64,8 +56,8 @@ public class ItemController {
 
     // 更新商品信息
     @RequestMapping(value = "/item/update")
-    public ShopResult updateItem(Item item, String desc) {
-        return this.itemService.updateItem(item, desc);
+    public ShopResult updateItem(Item item, String desc, String itemParams) {
+        return this.itemService.updateItem(item, desc, itemParams);
     }
 
 

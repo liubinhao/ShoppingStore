@@ -44,4 +44,8 @@ public class Item implements Serializable {
     @JoinColumn(name = "itemId", referencedColumnName = "itemId", insertable = false, updatable = false)
     private ItemDesc itemDesc;
 
+    @OneToOne
+    @JoinColumn(name = "itemId", referencedColumnName = "itemId", insertable = false, updatable = false)
+    private ItemParamItem itemParamItem;
+
 }

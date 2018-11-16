@@ -31,14 +31,5 @@ public class FastDFSTest {
 //        byte[] bytes = "HelloFastDFS".getBytes();
 //        String[] strings = storageClient.upload_file(bytes, 0, bytes.length, "txt", null);
         System.out.println(Arrays.toString(strings));
-
     }
-
-    // 测试FastDFSUtils工具类
-    @Test
-    public void imageTest() {
-        String s = FastDFSUtils.imageHandler("fastdfs.properties", "C:\\Users\\Administrator\\Downloads\\photo-1466854076813-4aa9ac0fc347.jpg","jpg");
-        System.out.println(s);
-    }
-
 }

@@ -19,4 +19,6 @@ public interface ItemParamRepository extends JpaRepository<ItemParam, Long> {
     @Modifying
     @Query("delete from ItemParam where id in :ids")
     void deleteByIds(@Param("ids") List<Long> ids);
+
+    ItemParam findByItemCatId(long itemCatId);
 }

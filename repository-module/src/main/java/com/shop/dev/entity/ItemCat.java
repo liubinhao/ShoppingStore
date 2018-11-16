@@ -1,5 +1,6 @@
 package com.shop.dev.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ import java.util.Objects;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
 public class ItemCat implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,12 +1,16 @@
 package com.shop.dev.service;
 
 import com.shop.dev.back_respository.ItemDescRepository;
+import com.shop.dev.back_respository.ItemParamItemRepository;
 import com.shop.dev.back_respository.ItemRepository;
+import com.shop.dev.entity.ItemParamItem;
 import com.shop.dev.result_wrapper.ShopResult;
 import com.shop.dev.entity.Item;
 import com.shop.dev.entity.ItemDesc;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -14,7 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName ItemServiceImpl
@@ -22,6 +28,7 @@ import java.util.List;
  * @Date 2018/11/8 14:47
  * @Version 1.0
  */
+
 @Service
 public class ItemServiceImpl implements ItemService {
     @Resource
@@ -30,17 +37,22 @@ public class ItemServiceImpl implements ItemService {
     @Resource
     private ItemDescRepository itemDescRepository;
 
-    @Cacheable(value = "itemService")
-    @Override
-    public Page<Item> findItems(int page, int rows) {
-        PageRequest pageable = PageRequest.of(page, rows);
-        return this.itemRepository.findAll(pageable);
-    }
+    @Resource
+    private ItemParamItemRepository itemParamItemRepository;
 
     @Cacheable(value = "itemService")
     @Override
-    public List<Item> findItems() {
-        return this.itemRepository.findAll();
+    public Map findItems(int page, int rows) {
+        // 获取到分页数据
+        PageRequest pageable = PageRequest.of(page - 1, rows);
+        Page<Item> items = this.itemRepository.findAll(pageable);
+        // 拿到数据总数
+        List<Item> itemList = this.itemRepository.findAll();
+        // 返回给前端所需数据
+        Map map = new HashMap();
+        map.put("total", itemList.size());
+        map.put("rows", items.getContent());
+        return map;
     }
 
     /**
@@ -70,7 +82,7 @@ public class ItemServiceImpl implements ItemService {
     @Transactional
     @CacheEvict(value = "itemService", allEntries = true)
     @Override
-    public ShopResult addItem(Item item, String desc) {
+    public ShopResult addItem(Item item, String desc, String itemParams) {
         item.setStatus((byte) 1);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         item.setCreated(timestamp);
@@ -78,6 +90,7 @@ public class ItemServiceImpl implements ItemService {
 
         Item item1 = this.itemRepository.saveAndFlush(item);
 
+        //添加商品描述
         ItemDesc itemDesc = new ItemDesc();
         itemDesc.setItemId(item1.getId());
         itemDesc.setItemDesc(desc);
@@ -85,6 +98,15 @@ public class ItemServiceImpl implements ItemService {
         itemDesc.setUpdated(timestamp);
 
         this.itemDescRepository.saveAndFlush(itemDesc);
+
+        //把商品的规格参数插入到 商品规格和商品的关系表tb_item_param_item 中
+        ItemParamItem itemParamItem = new ItemParamItem();
+        itemParamItem.setItemId(item1.getId());
+        itemParamItem.setParamData(itemParams);
+        itemParamItem.setCreated(timestamp);
+        itemParamItem.setUpdated(timestamp);
+
+        this.itemParamItemRepository.saveAndFlush(itemParamItem);
         return new ShopResult(200, "ok", null);
     }
 
@@ -100,7 +122,7 @@ public class ItemServiceImpl implements ItemService {
     @Transactional
     @CacheEvict(value = "itemService", allEntries = true)
     @Override
-    public ShopResult updateItem(Item item, String desc) {
+    public ShopResult updateItem(Item item, String desc, String itemParams) {
         Item item1 = this.itemRepository.getOne(item.getId());
         item.setStatus(item1.getStatus());
         item.setCreated(item1.getCreated());
@@ -117,6 +139,15 @@ public class ItemServiceImpl implements ItemService {
         itemDesc.setCreated(itemDesc1.getCreated());
         itemDesc.setUpdated(timestamp);
         this.itemDescRepository.saveAndFlush(itemDesc);
+
+        // 3.根据商品id更新 商品规格和商品的关系表tb_item_param_item
+        ItemParamItem itemParamItem = new ItemParamItem();
+        itemParamItem.setItemId(item1.getId());
+        itemParamItem.setParamData(itemParams);
+        itemParamItem.setCreated(itemDesc1.getCreated());
+        itemParamItem.setUpdated(timestamp);
+
+        this.itemParamItemRepository.saveAndFlush(itemParamItem);
 
         return new ShopResult(200, "ok", null);
     }

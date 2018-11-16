@@ -1,10 +1,13 @@
 package com.shop.dev.service;
 
+import com.shop.dev.result_wrapper.EasyUITreeNode;
 import com.shop.dev.result_wrapper.ShopResult;
 import com.shop.dev.entity.ItemParam;
 import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName ItemParamService
@@ -13,10 +16,14 @@ import java.util.List;
  * @Version 1.0
  */
 public interface ItemParamService {
+    // 查
+    Map findItemParams(int page, int rows);
 
-    Page<ItemParam> findItemParams(int page, int rows);
-
-    List<ItemParam> findItemParams();
-
+    // 删
     ShopResult deleteItemParam(List<Long> ids);
+
+    ShopResult getItemCatByCid(Long cid);
+
+    ShopResult insertItemParam(Long id, String paramData);
+
 }

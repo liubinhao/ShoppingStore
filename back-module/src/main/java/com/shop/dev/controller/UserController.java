@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 /**
  * @ClassName UserController
@@ -23,9 +24,14 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/back/login.do")
-    public ResultWrapper login(@RequestBody @Validated User user) {
+    public ResultWrapper login(@RequestBody @Validated User user, HttpSession session) {
         try {
             boolean b = this.userService.isLogin(user.getUsername(), user.getPassword());
+            if (b) {
+                session.setAttribute("user", user);
+            } else {
+                session.invalidate();
+            }
             return ResultWrapper.success(b);
         } catch (Exception e) {
             return ResultWrapper.success(false);
