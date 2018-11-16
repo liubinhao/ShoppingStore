@@ -1,6 +1,6 @@
 package com.shop.dev.controller;
 
-import com.shop.dev.controller.response_web.EasyUITreeNode;
+import com.shop.dev.result_wrapper.EasyUITreeNode;
 import com.shop.dev.service.ItemCatService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,12 +16,11 @@ import java.util.List;
  * @Version 1.0
  */
 @RestController
-@RequestMapping("/item/cat")
 public class ItemCatController {
     @Resource
     private ItemCatService itemCatService;
 
-    @RequestMapping("/list")
+    @RequestMapping("/item/cat/list")
     public List<EasyUITreeNode> findItemCats(@RequestParam(value = "id", defaultValue = "0") long itemCatId) {
         return itemCatService.findItemCat(itemCatId);
     }

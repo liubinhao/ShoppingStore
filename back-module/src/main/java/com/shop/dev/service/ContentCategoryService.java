@@ -1,7 +1,7 @@
 package com.shop.dev.service;
 
-import com.shop.dev.controller.response_web.EasyUITreeNode;
-import com.shop.dev.controller.response_web.ShopResult;
+import com.shop.dev.result_wrapper.EasyUITreeNode;
+import com.shop.dev.result_wrapper.ShopResult;
 
 import java.util.List;
 

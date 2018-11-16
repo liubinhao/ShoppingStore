@@ -1,7 +1,7 @@
 package com.shop.dev.controller;
 
-import com.shop.dev.controller.response_web.EasyUITreeNode;
-import com.shop.dev.controller.response_web.ShopResult;
+import com.shop.dev.result_wrapper.EasyUITreeNode;
+import com.shop.dev.result_wrapper.ShopResult;
 import com.shop.dev.service.ContentCategoryService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

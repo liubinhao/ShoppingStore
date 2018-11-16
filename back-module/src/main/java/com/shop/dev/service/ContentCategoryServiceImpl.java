@@ -1,8 +1,8 @@
 package com.shop.dev.service;
 
 import com.shop.dev.back_respository.ContentCategoryRepository;
-import com.shop.dev.controller.response_web.EasyUITreeNode;
-import com.shop.dev.controller.response_web.ShopResult;
+import com.shop.dev.result_wrapper.EasyUITreeNode;
+import com.shop.dev.result_wrapper.ShopResult;
 import com.shop.dev.entity.ContentCategory;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;

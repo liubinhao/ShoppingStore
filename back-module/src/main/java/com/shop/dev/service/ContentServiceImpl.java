@@ -1,7 +1,7 @@
 package com.shop.dev.service;
 
 import com.shop.dev.back_respository.ContentRepository;
-import com.shop.dev.controller.response_web.ShopResult;
+import com.shop.dev.result_wrapper.ShopResult;
 import com.shop.dev.entity.Content;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;

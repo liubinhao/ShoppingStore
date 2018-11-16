@@ -18,12 +18,11 @@ import javax.annotation.Resource;
  * @Version 1.0
  */
 @RestController
-@RequestMapping("/back")
 public class UserController {
     @Resource
     private UserService userService;
 
-    @PostMapping("/login.do")
+    @PostMapping("/back/login.do")
     public ResultWrapper login(@RequestBody @Validated User user) {
         try {
             boolean b = this.userService.isLogin(user.getUsername(), user.getPassword());

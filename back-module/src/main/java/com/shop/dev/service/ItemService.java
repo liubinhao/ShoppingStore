@@ -1,8 +1,7 @@
 package com.shop.dev.service;
 
-import com.shop.dev.controller.response_web.ShopResult;
+import com.shop.dev.result_wrapper.ShopResult;
 import com.shop.dev.entity.Item;
-import com.shop.dev.entity.ItemDesc;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.shop.dev.controller.response_web;
+package com.shop.dev.result_wrapper;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

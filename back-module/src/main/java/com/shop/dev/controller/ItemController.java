@@ -1,6 +1,6 @@
 package com.shop.dev.controller;
 
-import com.shop.dev.controller.response_web.ShopResult;
+import com.shop.dev.result_wrapper.ShopResult;
 import com.shop.dev.entity.Item;
 import com.shop.dev.service.ItemService;
 import org.springframework.data.domain.Page;
@@ -40,9 +40,9 @@ public class ItemController {
      * @Author 刘树青 上下架及其删除
      * @Date 2018/11/12 15:50
      * @param: [ids, method]
-     * return: com.shop.dev.controller.response_web.ShopResult
+     * return: com.shop.dev.result_wrapper.ShopResult
      */
-    @RequestMapping("/rest/item/{method}")
+    @RequestMapping("/item/{method}")
     public ShopResult updateItemStatus(@RequestParam(value = "ids") List<Long> ids, @PathVariable String method) {
         return this.itemService.updateItemStatus(ids, method);
     }

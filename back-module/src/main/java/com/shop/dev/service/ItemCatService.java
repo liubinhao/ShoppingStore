@@ -1,6 +1,6 @@
 package com.shop.dev.service;
 
-import com.shop.dev.controller.response_web.EasyUITreeNode;
+import com.shop.dev.result_wrapper.EasyUITreeNode;
 
 import java.util.List;
 

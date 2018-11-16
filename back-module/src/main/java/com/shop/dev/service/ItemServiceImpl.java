@@ -2,7 +2,7 @@ package com.shop.dev.service;
 
 import com.shop.dev.back_respository.ItemDescRepository;
 import com.shop.dev.back_respository.ItemRepository;
-import com.shop.dev.controller.response_web.ShopResult;
+import com.shop.dev.result_wrapper.ShopResult;
 import com.shop.dev.entity.Item;
 import com.shop.dev.entity.ItemDesc;
 import org.springframework.cache.annotation.CacheEvict;
@@ -13,9 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -49,7 +47,7 @@ public class ItemServiceImpl implements ItemService {
      * @Author 刘树青 上下架及其删除
      * @Date 2018/11/12 15:00
      * @param: [itemIds, method]
-     * return: com.shop.dev.controller.response_web.ShopResult
+     * return: com.shop.dev.result_wrapper.ShopResult
      */
     @Transactional
     @CacheEvict(value = "itemService", allEntries = true)

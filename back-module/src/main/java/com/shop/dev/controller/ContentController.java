@@ -1,6 +1,6 @@
 package com.shop.dev.controller;
 
-import com.shop.dev.controller.response_web.ShopResult;
+import com.shop.dev.result_wrapper.ShopResult;
 import com.shop.dev.entity.Content;
 import com.shop.dev.service.ContentService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +32,7 @@ public class ContentController {
         return this.contentService.addContent(content);
     }
 
-    @RequestMapping("/rest/content/edit")
+    @RequestMapping("/content/edit")
     public ShopResult updateContent(Content content) {
         return this.contentService.updateContent(content);
     }

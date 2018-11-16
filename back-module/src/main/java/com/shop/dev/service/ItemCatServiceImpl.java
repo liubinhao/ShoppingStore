@@ -1,7 +1,7 @@
 package com.shop.dev.service;
 
 import com.shop.dev.back_respository.ItemCatRepository;
-import com.shop.dev.controller.response_web.EasyUITreeNode;
+import com.shop.dev.result_wrapper.EasyUITreeNode;
 import com.shop.dev.entity.ItemCat;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
