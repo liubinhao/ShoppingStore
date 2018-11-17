@@ -23,4 +23,10 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     @Query("update Item set status= :status where id in :ids")
     int updateByItemIds(@Param("status") byte status, @Param("ids") List<Long> ids);
 
+    /**
+     * CREATE BY Liu.
+     * ON 2018/11/7 11:12
+     */
+    List<Item> findAllByTitleContains(String title);
+
 }
