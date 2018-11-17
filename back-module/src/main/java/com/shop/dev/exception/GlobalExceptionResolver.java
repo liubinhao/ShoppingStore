@@ -20,7 +20,7 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
         if (ex instanceof MyException) {
-            ModelAndView mv = new ModelAndView("redirect:https://api.bilibili.com/x/web-interface/nav?callback=jqueryCallback_bili_922395052746579&jsonp=jsonp&_=1542352028888");
+            ModelAndView mv = new ModelAndView("redirect:https://pan.baidu.com/error/404.html");
             return mv;
         }
         return null;
