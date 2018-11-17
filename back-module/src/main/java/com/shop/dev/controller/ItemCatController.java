@@ -20,6 +20,7 @@ public class ItemCatController {
     @Resource
     private ItemCatService itemCatService;
 
+    // 选择类目
     @RequestMapping("/item/cat/list")
     public List<EasyUITreeNode> findItemCats(@RequestParam(value = "id", defaultValue = "0") long itemCatId) {
         return itemCatService.findItemCat(itemCatId);

@@ -23,7 +23,6 @@ public class ItemParamItemServiceImpl implements ItemParamItemService {
     @Override
     public ShopResult findIItemParamItem(long itemId) {
         ItemParamItem itemParamItem = this.itemParamItemRepository.findByItemId(itemId);
-        System.out.println(itemParamItem);
         return new ShopResult(200, "ok", itemParamItem);
     }
 }

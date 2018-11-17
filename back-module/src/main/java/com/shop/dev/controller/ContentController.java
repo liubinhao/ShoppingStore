@@ -22,21 +22,25 @@ public class ContentController {
     @Resource
     private ContentService contentService;
 
+    // 根据内容展示
     @RequestMapping("/content/query/list")
     public Map findContents(@RequestParam(defaultValue = "0") long categoryId, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "20") int rows) {
         return this.contentService.findContents(categoryId, page - 1, rows);
     }
 
+    // 新增
     @RequestMapping("/content/save")
     public ShopResult addContent(Content content) {
         return this.contentService.addContent(content);
     }
 
+    // 编辑
     @RequestMapping("/content/edit")
     public ShopResult updateContent(Content content) {
         return this.contentService.updateContent(content);
     }
 
+    // 删除
     @RequestMapping("/content/delete")
     public ShopResult deleteContent(@RequestParam(value = "ids") List<Long> ids) {
         return this.contentService.deleteContent(ids);

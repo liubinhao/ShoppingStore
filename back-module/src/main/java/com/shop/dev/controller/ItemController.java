@@ -28,12 +28,7 @@ public class ItemController {
         return this.itemService.findItems(page, rows);
     }
 
-    /**
-     * @Author 刘树青 上下架及其删除
-     * @Date 2018/11/12 15:50
-     * @param: [ids, method]
-     * return: com.shop.dev.result_wrapper.ShopResult
-     */
+    // 上下架及其删除
     @RequestMapping("/item/{method}")
     public ShopResult updateItemStatus(@RequestParam(value = "ids") List<Long> ids, @PathVariable String method) {
         return this.itemService.updateItemStatus(ids, method);

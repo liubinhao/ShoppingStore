@@ -23,6 +23,7 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    // 登录
     @PostMapping("/back/login.do")
     public ResultWrapper login(@RequestBody @Validated User user, HttpSession session) {
         try {

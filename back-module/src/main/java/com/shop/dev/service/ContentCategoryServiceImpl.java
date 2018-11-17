@@ -28,6 +28,7 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
     @Cacheable(value = "contentCategoryService")
     @Override
     public List<EasyUITreeNode> findContentCategories(long parentId) {
+        // 根据一级类目查询
         List<ContentCategory> contentCategories = this.contentCategoryRepository.findByParentId(parentId);
 
         List<EasyUITreeNode> easyUITreeNodeList = new ArrayList<>();
@@ -36,6 +37,7 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
             EasyUITreeNode easyUITreeNode = new EasyUITreeNode();
             easyUITreeNode.setId(contentCategory.getId());
             easyUITreeNode.setText(contentCategory.getName());
+            // 若果该节点是父类目,就关闭
             easyUITreeNode.setState(contentCategory.getIsParent() == 1 ? "closed" : "open");
             easyUITreeNodeList.add(easyUITreeNode);
         }

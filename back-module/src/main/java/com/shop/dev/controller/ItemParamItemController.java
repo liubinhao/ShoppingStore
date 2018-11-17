@@ -19,6 +19,7 @@ public class ItemParamItemController {
     @Resource
     private ItemParamItemService itemParamItemService;
 
+    // 展示商品规格参数模板
     @RequestMapping("/item/param/item/query/{itemId}")
     public ShopResult findIItemParamItem(@PathVariable long itemId) {
         return this.itemParamItemService.findIItemParamItem(itemId);
