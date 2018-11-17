@@ -1,6 +1,6 @@
 package com.shop.dev.service;
 
-import com.shop.dev.back_respository.UserRepository;
+import com.shop.dev.repository.UserRepository;
 import com.shop.dev.entity.User;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;

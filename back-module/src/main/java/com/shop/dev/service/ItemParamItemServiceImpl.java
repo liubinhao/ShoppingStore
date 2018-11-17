@@ -1,6 +1,6 @@
 package com.shop.dev.service;
 
-import com.shop.dev.back_respository.ItemParamItemRepository;
+import com.shop.dev.repository.ItemParamItemRepository;
 import com.shop.dev.entity.ItemParamItem;
 import com.shop.dev.result_wrapper.ShopResult;
 import org.springframework.cache.annotation.Cacheable;

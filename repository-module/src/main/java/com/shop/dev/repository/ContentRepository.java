@@ -1,4 +1,4 @@
-package com.shop.dev.back_respository;
+package com.shop.dev.repository;
 
 import com.shop.dev.entity.Content;
 import org.springframework.data.domain.Page;

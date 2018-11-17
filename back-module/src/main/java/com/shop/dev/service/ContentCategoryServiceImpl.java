@@ -1,6 +1,6 @@
 package com.shop.dev.service;
 
-import com.shop.dev.back_respository.ContentCategoryRepository;
+import com.shop.dev.repository.ContentCategoryRepository;
 import com.shop.dev.result_wrapper.EasyUITreeNode;
 import com.shop.dev.result_wrapper.ShopResult;
 import com.shop.dev.entity.ContentCategory;

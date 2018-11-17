@@ -1,4 +1,4 @@
-package com.shop.dev.back_respository;
+package com.shop.dev.repository;
 
 import com.shop.dev.entity.ContentCategory;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,16 +1,14 @@
 package com.shop.dev.service;
 
-import com.shop.dev.back_respository.ItemDescRepository;
-import com.shop.dev.back_respository.ItemParamItemRepository;
-import com.shop.dev.back_respository.ItemRepository;
+import com.shop.dev.repository.ItemDescRepository;
+import com.shop.dev.repository.ItemParamItemRepository;
+import com.shop.dev.repository.ItemRepository;
 import com.shop.dev.entity.ItemParamItem;
 import com.shop.dev.result_wrapper.ShopResult;
 import com.shop.dev.entity.Item;
 import com.shop.dev.entity.ItemDesc;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
