@@ -5,4 +5,15 @@ dependencies {
     implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testCompile("junit:junit")
+
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
+    compile group: 'org.hibernate', name: 'hibernate-validator', version: '6.0.13.Final'
+    // fastDFS
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.4'
+    // https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
+    compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.1'
+
 }

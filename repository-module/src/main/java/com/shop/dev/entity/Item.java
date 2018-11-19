@@ -1,31 +1,51 @@
 package com.shop.dev.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * CREATE BY Liu.
- * ON 2018/11/7 11:55
+ * @ClassName Item
+ * @Author 刘树青
+ * @Date 2018/11/7 17:16
+ * @Version 1.0
  */
 @Entity
-@Data
 @Table(name = "tb_item")
-public class Item {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Item implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long itemId;
-    private Long cid;
-    private Integer status;
+    @Column(name = "item_id")
+    private long id;
     private String title;
     private String sellPoint;
-    private Double price;
-    private Integer num;
+    private long price;
+    private int num;
     private String barcode;
     private String image;
+    private long cid;
+    private byte status;
     private Timestamp created;
-    private  Timestamp updated;
+    private Timestamp updated;
 
+    @OneToOne
+    @JoinColumn(name = "cid", referencedColumnName = "id", insertable = false, updatable = false)
+    private ItemCat itemCat;
+
+    @OneToOne
+    @JoinColumn(name = "itemId", referencedColumnName = "itemId", insertable = false, updatable = false)
+    private ItemDesc itemDesc;
+
+    @OneToOne
+    @JoinColumn(name = "itemId", referencedColumnName = "itemId", insertable = false, updatable = false)
+    private ItemParamItem itemParamItem;
 
 }
