@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemParam {
-
-    private Long userId;
     private Integer itemNum;
     private Long itemId;
 }

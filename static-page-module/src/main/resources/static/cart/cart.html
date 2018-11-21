@@ -51,7 +51,9 @@
                 var inputArray = document.getElementById("list").getElementsByTagName("input");
                 for (var i = 0; i < inputArray.length; i++) {
                     if (inputArray[i].type == "checkbox") {
+                       if ( inputArray[i].getAttribute('disabled') === null)
                         inputArray[i].checked = inputObj.checked;
+                        TTCart.refreshTotalPrice();
                     }
                 }
             }
@@ -81,8 +83,9 @@
 
             <div class="cart-toolbar clearfix">
                 <div class="total fr">
-                    <p><span class="totalSkuPrice">¥总计：<span id="totalPrice"></span></span></p>
-                    <p><span id="totalRePrice">- ¥0.00</span>优惠：</p>
+                    <p style="color: red; font-size: 16px"><span>￥总计：<span id="totalPrice" style="text-decoration:line-through"></span></span></p>
+                    <p><span>- ￥<font id="totalRePrice"></font></span>优惠：</p>
+                    <p>优惠后:<span class="totalSkuPrice"></span></p>
                 </div>
                 <div class="amout fr"><span id="selectedCount"></span> 件商品</div>
             </div>
@@ -123,7 +126,7 @@
                 <div class="cart-total-2014">
                     <div class="cart-button">
                   <span class="check-comm-btns" id="checkout-jd">
-                      <a class="checkout" href="/order/order-cart.html" clstag="clickcart|keycount|xincart|gotoOrderInfo" id="toSettlement">去结算<b></b></a>
+                      <a class="checkout" href="javascript:void(0)" clstag="clickcart|keycount|xincart|gotoOrderInfo" id="toSettlement">去结算<b></b></a>
                   </span>
                         <!--<span class="combine-btns" style="display:none">-->
                         <!--<span class="fore1" style="display: none;">-->
@@ -167,8 +170,8 @@
 <!-- footer end -->
 
 <!-- 购物车相关业务 -->
-<!--<script type="text/javascript" src="/js/cart.js"></script>-->
-<!--<script type="text/javascript" src="/js/product.js"></script>-->
+<script type="text/javascript" src="/js/cart.js"></script>
+<script type="text/javascript" src="/js/product.js"></script>
 <script type="text/javascript" src="/js/jquery.price_format.2.0.min.js"></script>
 
 </body>

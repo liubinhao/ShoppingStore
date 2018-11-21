@@ -4,7 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
     <title>登录商城</title>
     <link type="text/css" rel="stylesheet" href="/css/login.css"/>
-    <script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="sss.js"></script>
 </head>
 <body>
 <div class="w">
@@ -100,6 +101,9 @@
             LOGIN.login();
         });
     });
+
+    $.session.set('aaa','吴牛逼');
+
 </script>
 </body>
 </html>
