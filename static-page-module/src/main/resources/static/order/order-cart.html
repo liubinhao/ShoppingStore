@@ -12,7 +12,7 @@
     <!--结算页面样式-->
     <link rel="stylesheet" type="text/css" href="/css/base.css" media="all" />
     <link type="text/css" rel="stylesheet"  href="/css/order-commons.css" source="widget"/>
-    <script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script type="text/javascript" src="/js/base.js"></script>
     <script type="text/javascript" src="/js/order.common.js"></script>
     <script type="text/javascript" src="/js/jquery.checkout.js"></script>
@@ -29,15 +29,15 @@
 
 <form id="orderForm" class="hide" action="/order/create.html" method="get">
     <input type="hidden" name="paymentType" value="1"/>
-    <c:forEach items="${cartList }" var="cart" varStatus="status">
-        <c:set var="totalPrice"  value="${ totalPrice + (cart.price * cart.num)}"/>
-        <input type="hidden" name="orderItems[${status.index}].itemId" value="${cart.id}"/>
-        <input type="hidden" name="orderItems[${status.index}].num" value="${cart.num }"/>
-        <input type="hidden" name="orderItems[${status.index}].price" value="${cart.price}"/>
-        <input type="hidden" name="orderItems[${status.index}].totalFee" value="${cart.price * cart.num}"/>
-        <input type="hidden" name="orderItems[${status.index}].title" value="${cart.title}"/>
-        <input type="hidden" name="orderItems[${status.index}].picPath" value="${cart.images[0]}"/>
-    </c:forEach>
+    <!--<c:forEach items="${cartList }" var="cart" varStatus="status">-->
+        <!--<c:set var="totalPrice"  value="${ totalPrice + (cart.price * cart.num)}"/>-->
+        <!--<input type="hidden" name="orderItems[${status.index}].itemId" value="${cart.id}"/>-->
+        <!--<input type="hidden" name="orderItems[${status.index}].num" value="${cart.num }"/>-->
+        <!--<input type="hidden" name="orderItems[${status.index}].price" value="${cart.price}"/>-->
+        <!--<input type="hidden" name="orderItems[${status.index}].totalFee" value="${cart.price * cart.num}"/>-->
+        <!--<input type="hidden" name="orderItems[${status.index}].title" value="${cart.title}"/>-->
+        <!--<input type="hidden" name="orderItems[${status.index}].picPath" value="${cart.images[0]}"/>-->
+    <!--</c:forEach>-->
     <input type="hidden" name="payment" value="<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${totalPrice/100 }"/>"/>
     <input type="hidden" name="orderShipping.receiverName" value="入云龙"/>
     <input type="hidden" name="orderShipping.receiverMobile" value="15891588888"/>
@@ -181,35 +181,35 @@
                                         <div class="goods-list">
                                             <!--配送方式-->
                                             <h4 class="vendor_name_h" id="0">商家：shop商城</h4>
-                                            <div class="goods-suit goods-last">
-                                                <c:forEach items="${cartList }" var="cart">
-                                                    <div class="goods-item goods-item-extra">
+                                            <div class="goods-suit goods-last" id="goods-list">
+                                                <!--<c:forEach items="${cartList }" var="cart">-->
+                                                    <!--<div class="goods-item goods-item-extra">-->
 
-                                                        <div class="p-img">
-                                                            <a target="_blank" href="/item/${cart.id}.html">
-                                                                <img src="${cart.images[0]}" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="goods-msg">
-                                                            <div class="p-name">
-                                                                <a href="/item/${cart.id}.html" target="_blank">
-                                                                    ${cart.title }
-                                                                </a>
-                                                            </div>
-                                                            <div class="p-price">
-                                                                <!--增加预售金额显示 begin   预售分阶段支付类型（1：一阶梯全款支付；2：一阶梯定金支付(全款或定金可选)；3：三阶梯仅定金支付） -->
-                                                                <strong>￥<fmt:formatNumber
-                                                                        groupingUsed="false" maxFractionDigits="2"
-                                                                        minFractionDigits="2" value="${cart.price / 100 }" /></strong>
-                                                                <!--增加预售金额显示 end-->
-                                                                <span class="ml20"> x${cart.num} </span>
-                                                                <span class="ml20 p-inventory" skuId="11555193">有货</span>
-                                                            </div>
-                                                            <i class="p-icon p-icon-w"></i><span class="ftx-04">7天无理由退货</span>
-                                                        </div>
-                                                        <div class="clr"></div>
-                                                    </div>
-                                                </c:forEach>
+                                                        <!--<div class="p-img">-->
+                                                            <!--<a target="_blank" href="/item/${cart.id}.html">-->
+                                                                <!--<img src="${cart.images[0]}" alt="">-->
+                                                            <!--</a>-->
+                                                        <!--</div>-->
+                                                        <!--<div class="goods-msg">-->
+                                                            <!--<div class="p-name">-->
+                                                                <!--<a href="/item/${cart.id}.html" target="_blank">-->
+                                                                    <!--${cart.title }-->
+                                                                <!--</a>-->
+                                                            <!--</div>-->
+                                                            <!--<div class="p-price">-->
+                                                                <!--&lt;!&ndash;增加预售金额显示 begin   预售分阶段支付类型（1：一阶梯全款支付；2：一阶梯定金支付(全款或定金可选)；3：三阶梯仅定金支付） &ndash;&gt;-->
+                                                                <!--<strong>￥<fmt:formatNumber-->
+                                                                        <!--groupingUsed="false" maxFractionDigits="2"-->
+                                                                        <!--minFractionDigits="2" value="${cart.price / 100 }" /></strong>-->
+                                                                <!--&lt;!&ndash;增加预售金额显示 end&ndash;&gt;-->
+                                                                <!--<span class="ml20"> x${cart.num} </span>-->
+                                                                <!--<span class="ml20 p-inventory" skuId="11555193">有货</span>-->
+                                                            <!--</div>-->
+                                                            <!--<i class="p-icon p-icon-w"></i><span class="ftx-04">7天无理由退货</span>-->
+                                                        <!--</div>-->
+                                                        <!--<div class="clr"></div>-->
+                                                    <!--</div>-->
+                                                <!--</c:forEach>-->
                                             </div>
                                         </div>
                                         <!--goods-list 结束-->
@@ -259,9 +259,9 @@
                         <div class="statistic fr">
                             <div class="list">
 					<span>
-						总商品金额：
+                        总商品金额：
 					</span>
-                                <em class="price" id="warePriceId">¥<fmt:formatNumber value="${totalPrice / 100}" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></em>
+                                <em class="price" id="warePriceId"></em>
                             </div>
                             <div class="list">
                                 <span>运费：</span> <em class="price" id="freightPriceId">
@@ -269,7 +269,7 @@
                             </div>
                             <div class="list">
                                 <span>应付总额：</span> <em class="price" id="sumPayPriceId">
-                                ￥<fmt:formatNumber value="${totalPrice / 100}" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></em>
+                                ￥ </em>
                             </div>
                         </div>
                         <div class="clr"></div>
@@ -290,7 +290,7 @@
                                         id="order-submit"	onclick="$('#orderForm').submit()">
                                     提交订单
                                 </button>
-                                <span class="total">应付总额：<strong id="payPriceId">￥<fmt:formatNumber value="${totalPrice / 100}" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></strong>
+                                <span class="total">应付总额：<strong id="payPriceId">￥</strong>
           </span>
                                 <span id="checkCodeDiv"></span>
                                 <div class="checkout-submit-tip" id="changeAreaAndPrice" style="display: none;">
@@ -312,6 +312,10 @@
 
 </div>
 </div>
+
+
+<script type="text/javascript" src="/js/cart/order-cart.js"></script>
+
 
 <!-- /main -->
 <!--<jsp:include page="commons/footer.jsp" />-->

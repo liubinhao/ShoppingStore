@@ -7,8 +7,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>注册-个人用户</title>
     <link type="text/css" rel="stylesheet" href="/css/regist.personal.css"/>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <link type="text/css" rel="stylesheet" href="/css/passport.base.css"/>
-    <script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
+    <script src="sss.js"></script>
 </head>
 <body>
 <div class="w" id="logo">
@@ -187,6 +188,9 @@
                 }
             }
         };
+
+        let a = $.session.get('aaa')
+        console.log(a);
     </script>
 </div>
 

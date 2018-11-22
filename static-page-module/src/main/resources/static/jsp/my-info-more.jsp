@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="/css/base.css" media="all" />
 <link rel="stylesheet" type="text/css" href="/css/myjd.common.css" media="all" />
 <link rel="stylesheet" type="text/css" href="/css/myjd.info.css" media="all" />
-<script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 </head>
 <body>
 <script type="text/javascript" src="/js/base-2011.js" charset="utf-8"></script>

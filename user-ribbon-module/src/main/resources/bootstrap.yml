@@ -1,13 +1,9 @@
 spring:
   application:
-    name: repository-module
+    name: test-module
   cloud:
     config:
       uri: http://localhost:8760
       fail-fast: true
   profiles:
     active: dev
-
-  redis:
-    host: 127.0.0.1
-    port: 6379
