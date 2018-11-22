@@ -2,8 +2,10 @@ package com.shop.dev.interceptor;
 
 import com.shop.dev.entity.User;
 import com.shop.dev.exception.MyException;
+import com.shop.dev.utils.JWT.JWTUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
+import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,12 +19,13 @@ import javax.servlet.http.HttpSession;
  */
 @Component
 public class UserInterceptor implements HandlerInterceptor {
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        if (user != null) {
+        Jedis jedis = new Jedis();
+        String authentication = jedis.get("Authentication");
+        if (authentication != null) {
+            String token = JWTUtils.autoRequire(authentication);
+            jedis.set("authentication", token);
             return true;
         } else {
             throw new MyException("网页找不到");

@@ -1,11 +1,8 @@
-package com.shop.dev.utils;
+package com.shop.dev.utils.fast_dfs;
 
-import org.apache.commons.io.IOUtils;
 import org.csource.common.MyException;
 import org.csource.fastdfs.*;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 /**

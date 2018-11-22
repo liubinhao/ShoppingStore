@@ -1,5 +1,7 @@
 package com.shop.dev.service;
 
+import com.shop.dev.entity.User;
+
 /**
  * @ClassName UserService
  * @Author 刘树青
@@ -9,5 +11,7 @@ package com.shop.dev.service;
 public interface UserService {
 
     // 后台:校验是否登录成功
-    boolean isLogin(String username, String password);
+    User findUser(String username, String password);
+
+    User findUser(String username);
 }

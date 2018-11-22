@@ -1,4 +1,4 @@
-package com.shop.dev.utils;
+package com.shop.dev.utils.fast_dfs;
 
 import java.io.IOException;
 import java.io.InputStream;
