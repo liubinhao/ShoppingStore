@@ -61,31 +61,23 @@
 
     function orderFind(resp) {
         totalCount = resp.data.totalCount;
-
-
         $('tbody').remove();
         var tbody = $('<tbody></tbody>');
-
         var tab = $('#table');
-
         for (var order of resp.data.items) {
-
             var status = $('<td></td>');
             var tr1 = $('<tr class="tr-th"></tr>');
             var td2 = $('<td colspan="6"><span class="tcol1">\n' +
                 '                    订单编号:\n' +
                 '                    <a name="orderIdLinks" id= target="_blank"\n' +
                 '                       href="http://order.jd.com/normal/item.action?orderid=2538292730&amp;PassKey=769448C6BA99F1ADA8244BAE7BC60580"\n' +
-                '                       clstag="click|keycount|orderinfo|order_num">' +order.orderId + '</a>\n' +
+                '                       clstag="click|keycount|orderinfo|order_num">' + order.orderId + '</a>\n' +
                 '                </span>\n' +
                 '                                        <span class="tcol2">shop</span>\n' +
                 '                                        <span class="tcol3"><a class="btn-im" onclick="getPamsForChat()" href="#none" title="联系客服"></a></span></td>')
             tr1.append(td2);
-
-
             var tr = $('<tr></tr>')
             var td = $('<td></td>')
-
             switch (order.status) {
                 case 1:
                     status.text("未付款");
@@ -129,6 +121,12 @@
                 case 2:
                     paym = "货到付款";
                     break;
+                case 3:
+                    paym = "公司转账";
+                    break;
+                case 4:
+                    paym = "邮局汇款";
+                    break;
             }
 
             for (var items of order.orderItemList) {
@@ -138,7 +136,7 @@
                 '                                           href="http://localhost:8999/order/info/show.html">查看</a><span\n' +
                 '                                            id="bvb "></span><span  class="pop-recycle-a">|<a\n' +
                 '                                            id="bvb "></span><span  class="pop-recycle-a">|<a\n' +
-                '                                            href="javascript:void(0)"  name='+order.orderId+' id="deleteOrder" clstag="click|keycount|orderinfo|order_del"\n' +
+                '                                            href="javascript:void(0)"  name=' + order.orderId + ' id="deleteOrder" clstag="click|keycount|orderinfo|order_del"\n' +
                 '                                            onclick="deleteOrder(this)" ">删除</span></a><span\n' +
                 '                                            id="doi2538292730"><br><a\n' +
                 '                                            href="http://localhost:8999/order/info/appraisal.html">评价晒单</a><br></span><a\n' +
@@ -159,11 +157,13 @@
             // });
         }
     }
+
     function deleteOrder(obj) {
         var orderId = $(obj).attr("name");
         console.log(orderId);
         $.get(url + "/order/deleteOrder/" + orderId, orderFind)
     }
+
     $(function () {
         $('#oid').click(function () {
             var params = $(this).parent().parent().children().eq(0).text();

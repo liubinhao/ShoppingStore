@@ -8,26 +8,41 @@ $('#payPriceId').text(totalPrice);
 
 let url = 'http://localhost:8780/cart/findShoppingList';
 let param = {itemIds: itemList};
+$.get(url, param, shoppingList);
 
-$.get(url, param,  shoppingList);
 
+let param1 = {shipping: shippingList};
+let url1 = 'http://localhost:8775/shipping/findByUserId/1';
+$.get("url1", param1, shippingList);
+
+function shippingList(resp1) {
+    for (var ship = resp1.data){
+      var  name=ship.receiverName;
+      var  phone=ship.receiverPhone;
+      var  city=ship.receiverCity;
+      var  district=ship.receiverDistrict;
+      var  address=ship.receiverAddress;
+      shippingList.append(name).append(phone).append(city).append(district).append(address);
+    }
+}
 
 function shoppingList(resp) {
 
-    if (resp.status === true){
+
+    if (resp.status === true) {
         let goodsList = $('#goods-list');
         goodsList.empty();
 
 
         let data = resp.data;
-        for (let i of data){
+        for (let i of data) {
 
 
             // 商品的所有信息
 
             // 图片这一块
             let p_img = $('<div style="float: left" class="p-img"></div>');
-            let imgHref = $('<a target="_blank" class="p-item" itemId="'+i.item.itemId+'" href="javaScript:void(0)"></a>');
+            let imgHref = $('<a target="_blank" class="p-item" itemId="' + i.item.itemId + '" href="javaScript:void(0)"></a>');
             let image = $('<img width="82px" height="92px" alt="" />');
             image.attr('src', i.item.image);
             imgHref.append(image);
@@ -37,16 +52,16 @@ function shoppingList(resp) {
             let goodsDiv = $('<div class="goods-msg" style="float: left; margin-left: 20px ;"></div>');
 
             let p_name = $('<div class="p-name"></div>');
-            let nameHref =$('<a href="javaScript:void(0)" class="p-item" itemId="'+i.item.itemId+'" target="_blank"></a>');
+            let nameHref = $('<a href="javaScript:void(0)" class="p-item" itemId="' + i.item.itemId + '" target="_blank"></a>');
             nameHref.text(i.item.title);
             p_name.append(nameHref);
 
-            let p_price =$('<div class="p-price"></div><br/>');
-            let price = $('<strong>￥'+i.item.price / 100 +'</strong>');
-            let buyNum = $('<span class="ml20">'+i.buyNum+'</span>');
-            let inventory = $('<span class="ml20 p-inventory skuId='+i.item.itemId+'"></span>');
+            let p_price = $('<div class="p-price"></div><br/>');
+            let price = $('<strong>￥' + i.item.price / 100 + '</strong>');
+            let buyNum = $('<span class="ml20">' + i.buyNum + '</span>');
+            let inventory = $('<span class="ml20 p-inventory skuId=' + i.item.itemId + '"></span>');
             let stock = i.item.num - i.buyNum;
-            if (stock > 50){
+            if (stock > 50) {
                 inventory.text('库存丰富');
             } else if (stock > 0) {
                 inventory.text('即将断货');
@@ -67,14 +82,13 @@ function shoppingList(resp) {
 
 
         }
-    $('.p-item').click(function () {
-       let itemId = $(this).attr('itemId');
-       window.localStorage.setItem("itemId", itemId);
-       window.location.href = '/cart/cart-item.html';
-    });
+        $('.p-item').click(function () {
+            let itemId = $(this).attr('itemId');
+            window.localStorage.setItem("itemId", itemId);
+            window.location.href = '/cart/cart-item.html';
+        });
 
     }
-
 
 
 }

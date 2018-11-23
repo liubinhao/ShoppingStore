@@ -33,11 +33,10 @@ public class User {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updated;
 
-//
-//    @OneToMany(targetEntity = Order.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "order_id")
-//    List<Order> orderList = new ArrayList<>();
 
+//    @OneToMany(targetEntity = OrderShipping.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "userId")
+//    List<OrderShipping> orderShippingList = new ArrayList<>();
 
 
 }

@@ -20,8 +20,9 @@ import java.util.Date;
 @Table(name = "tb_order_shipping")
 public class OrderShipping {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderShippingId;
-//    private Integer orderId;
+    //    private Integer orderId;
     private String receiverName;
     //    固定电话
     private String receiverPhone;
@@ -40,8 +41,10 @@ public class OrderShipping {
     private Date created;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updated;
+    private Integer userId;
 
 
-
-
+//    @ManyToOne(cascade = { CascadeType.ALL })
+//    @JoinColumn(name="userId" , insertable = false, updatable = false)
+//    private User user;
 }

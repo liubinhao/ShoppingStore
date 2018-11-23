@@ -2,6 +2,7 @@ package com.shop.dev.order.service;
 
 import com.shop.dev.commons.ResultWrapper;
 import com.shop.dev.entity.Order;
+import com.shop.dev.entity.OrderShipping;
 import com.shop.dev.repository.OrderItemRepository;
 import com.shop.dev.repository.OrderRepository;
 import com.shop.dev.repository.OrderShippingRepository;
@@ -48,11 +49,12 @@ public class OrderService {
         List<Order> byUserId = orderRepository.findAllByUserId(userId, pageable);
         if (byUserId != null) {
             int totalCount = orderRepository.countFindByUserId(userId);
-            com.shop.dev.commons.Pageable paginfo=new com.shop.dev.commons.Pageable(page,size,totalCount,byUserId);
+            com.shop.dev.commons.Pageable paginfo = new com.shop.dev.commons.Pageable(page, size, totalCount, byUserId);
             return ResultWrapper.success(paginfo);
         }
         return ResultWrapper.error(401, "用户id错误");
     }
+
 
     //      根据orderid查询订单(bug:能查到其他人的订单)
     @Transactional(readOnly = true)
@@ -92,7 +94,7 @@ public class OrderService {
     public ResultWrapper deleteOrder(Integer orderId) {
         try {
             orderItemRepository.deleteByOrderId(orderId);
-            orderShippingRepository.deleteByOrderId(orderId);
+        //    orderShippingRepository.deleteByOrderId(orderId);
             orderRepository.deleteById(orderId);
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,62 +102,4 @@ public class OrderService {
         return ResultWrapper.success("ok");
     }
 
-
-    //
-//    @Transactional
-//    public ResultWrapper countFindByUserId(Integer userId) {
-//        int count = orderRepository.countFindByUserId(userId);
-//        return ResultWrapper.success(count);
-//    }
-
-    //      订单模糊查询
-//    @Transactional
-//    public ResultWrapper findByCreateAndStatus(String createTime, int status) throws ParseException {
-//        long currentTime = System.currentTimeMillis();
-//        long pastTime = 1;
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        switch (createTime) {
-//            case "最近三个月":
-//                pastTime = currentTime - (1000 * 90 * 1440 * 60);
-//                break;
-//
-//            case "今年内":
-//                pastTime = sdf.parse("2018-01-01").getTime();
-//                break;
-//            case "2017年":
-//                pastTime = sdf.parse("2017-01-01").getTime();
-//                currentTime = sdf.parse("2017-12-31").getTime();
-//                break;
-//            case "2017年前":
-//                currentTime = sdf.parse("2017-01-01").getTime();
-//                break;
-//        }
-//        List<Order> orderList = orderRepository.findAllByCreateTimeBetween(pastTime, currentTime);
-//        if (orderList != null && status != -1) {
-//            List<Order> list = new ArrayList<>();
-//            for (Order order : orderList) {
-//                if (order.getStatus() == status) {
-//                    list.add(order);
-//                }
-//                return ResultWrapper.success(list);
-//            }
-//            return ResultWrapper.success(orderList);
-//        }
-//
-//        return ResultWrapper.error(421, "没有订单");
-//    }
-
-    //springMvc servlet 接参数
-    //    根据商品编号或商品名称或订单编号进行模糊查询
-//
-//    public ResultWrapper findByItemIdOrTitleOrOrderId(String info) {
-//        List<Order> orderList = orderRepository.findAllByItemIdOrTitleOrOrderId(info);
-//        List<Integer> orderIds = orderList.stream().map(Order::getOrderId).collect(Collectors.toList());
-//        List<Order> orders = orderRepository.findByOrderIdIn(orderIds);
-//        return ResultWrapper.success(orders);
-//    }
-
-////      商品评价
-//    @Transactional
-//    public ResultWrapper addComment()
 }

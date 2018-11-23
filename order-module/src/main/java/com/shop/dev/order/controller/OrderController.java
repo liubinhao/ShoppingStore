@@ -35,7 +35,7 @@ public class OrderController {
     public ResultWrapper findOrderByUserId(
             @PathVariable Integer userId, @PathVariable Integer page, @PathVariable Integer size) {
 //        System.out.println(userId, size, page);
-        int a=10;
+        int a = 10;
         return orderService.findOrderByUserId(userId, page, size);
     }
 
@@ -64,6 +64,9 @@ public class OrderController {
     public ResultWrapper deleteOrder(@PathVariable Integer orderId) {
         return orderService.deleteOrder(orderId);
     }
+
+
+
 
     //  查询某个人 一共有多少条订单
 //    @RequestMapping("/findCountByUserId")
