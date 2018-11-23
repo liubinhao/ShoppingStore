@@ -4,6 +4,7 @@ import com.shop.dev.commons.ResultWrapper;
 import com.shop.dev.controller.param.ItemParam;
 import com.shop.dev.entity.Item;
 import com.shop.dev.repository.ItemRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,7 @@ public class CartService implements ICartService {
 
     // 查看购物车中所有的商品
     @Override
+    @Cacheable(value = "cartService")
     public List<?> showItemInformation() {
         HashOperations<Object, Object, Object> hash = redisTemplate.opsForHash();
         String key = "userId:" + userId;
@@ -81,10 +83,9 @@ public class CartService implements ICartService {
 
     // 批量删除
     @Override
-    public ResultWrapper batchDel(String keys) {
+    public ResultWrapper batchDel(String[] keys) {
         HashOperations<Object, Object, Object> hash = redisTemplate.opsForHash();
-        String[] fields = keys.split(",");
-        hash.delete("userId:100", fields);
+        hash.delete("userId:100", keys);
         return ResultWrapper.success("删除成功");
     }
 

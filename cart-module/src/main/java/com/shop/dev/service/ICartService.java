@@ -15,7 +15,7 @@ public interface ICartService {
 
     void updateItemQuantity(Long itemId, Integer buyNum);
 
-    ResultWrapper batchDel(String keys);
+    ResultWrapper batchDel(String[] keys);
 
     ResultWrapper findItemByItemId(Long itemId);
 

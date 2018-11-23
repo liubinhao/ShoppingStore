@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
+import java.util.Arrays;
 import java.util.List;
 
 // author: mrd
@@ -71,8 +72,7 @@ public class CartController {
      * @return
      */
     @PostMapping("/batchRem")
-    public ResultWrapper bathRem(@RequestParam(value = "str") String keys){
-
+    public ResultWrapper bathRem(@RequestBody String[] keys){
        return this.iCartService.batchDel(keys);
     }
 
@@ -97,6 +97,7 @@ public class CartController {
      */
     @GetMapping("/findShoppingList")
     public ResultWrapper shoppingList(String itemIds) {
+        System.out.println(itemIds);
       return this.iCartService.findShoppingList(itemIds);
     }
 
