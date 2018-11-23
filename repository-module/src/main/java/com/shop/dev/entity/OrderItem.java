@@ -24,7 +24,7 @@ public class OrderItem {
     @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderitem_id")
-    private String orderItemId;
+    private Integer orderItemId;
     private String itemId;
     private Integer orderId;
     private Integer num;
@@ -37,11 +37,9 @@ public class OrderItem {
     private String picPath;
 
 
-//    @OneToOne
-//    @JoinColumn(name = "orderId", referencedColumnName = "itemId", insertable = false, updatable = false)
-//
-//    private Item item;
-//
+    @OneToOne
+    @JoinColumn(name = "itemId", referencedColumnName = "itemId", insertable = false, updatable = false)
+    private Item item;
 //    @OneToOne
 //    @JoinColumn(name = "orderId", referencedColumnName = "orderId", insertable = false, updatable = false)
 //    private OrderShipping orderShipping;

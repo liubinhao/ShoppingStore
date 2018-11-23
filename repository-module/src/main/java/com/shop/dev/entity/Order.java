@@ -54,13 +54,27 @@ public class Order {
     private String buyerMessage;
     private String buyerNick;
     private String buyerRate;
+    private Integer orderShippingId;
 
 
-    @OneToMany(targetEntity = OrderItem.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "orderitem_id")
+    @OneToMany(targetEntity = OrderItem.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "orderId")
     List<OrderItem> orderItemList = new ArrayList<>();
 
     @OneToOne
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "orderShippingId", insertable = false, updatable = false)
     private OrderShipping orderShipping;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
