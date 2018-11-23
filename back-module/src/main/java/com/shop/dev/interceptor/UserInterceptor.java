@@ -1,6 +1,5 @@
 package com.shop.dev.interceptor;
 
-import com.shop.dev.entity.User;
 import com.shop.dev.exception.MyException;
 import com.shop.dev.utils.JWT.JWTUtils;
 import org.springframework.stereotype.Component;
@@ -9,7 +8,6 @@ import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * @ClassName UserInterceptor

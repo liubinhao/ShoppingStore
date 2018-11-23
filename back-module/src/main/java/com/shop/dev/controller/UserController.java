@@ -1,18 +1,16 @@
 package com.shop.dev.controller;
 
 import com.shop.dev.commons.ResultWrapper;
-import com.shop.dev.entity.User;
+import com.shop.dev.entity.UserInfo;
 import com.shop.dev.service.UserService;
 import com.shop.dev.utils.JWT.JWTUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
 /**
  * @ClassName UserController
@@ -28,12 +26,12 @@ public class UserController {
 
     // 登录
     @PostMapping("/back/login.do")
-    public ResultWrapper login(@RequestBody @Validated User user) {
+    public ResultWrapper login(@RequestBody @Validated UserInfo user) {
         Jedis jedis = new Jedis();
         try {
-            User u = this.userService.findUser(user.getUsername(), user.getPassword());
+            UserInfo u = this.userService.findUser(user.getUsername(), user.getPassword());
             if (u != null) {
-                String token = JWTUtils.newToken(u.getId());
+                String token = JWTUtils.newToken(u.getUserId());
                 jedis.set("Authentication", token);
             }
             return ResultWrapper.success(u != null);

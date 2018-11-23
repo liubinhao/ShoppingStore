@@ -43,13 +43,19 @@ $.ajaxSetup({
 
         if (arr.length != 0){
             let url = 'http://localhost:8780/cart/batchRem';
-            let param = {
-                str: arr.join(',')
-            };
-            $.post(url, param, function (resp) {
-                // showItemList();
-                window.location.reload();
-            })
+
+            $.ajax({
+               type: 'post',
+               url: url,
+               contentType: 'application/json',
+               data: JSON.stringify(arr),
+               success: function (resp) {
+                   // showItemList();
+                   window.location.reload();
+               }
+
+            });
+
         }
     });
 
