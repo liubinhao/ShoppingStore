@@ -31,14 +31,14 @@
 			<div class="mod-main">
                         <div class="mt">
                             <ul class="extra-l">
-                                <li class="fore-1"><a class="curr" href="http://i.jd.com/user/info">基本信息</a></li>
-                                <li class="fore-2"><a href="http://i.jd.com/user/userinfo/showImg.html">头像照片</a></li>
-                                <li class="fore-3"><a href="http://i.jd.com/user/userinfo/more.html">更多个人信息</a></li>
+                                <li class="fore-1"><a class="curr" href="http://i.jd.com/User/info">基本信息</a></li>
+                                <li class="fore-2"><a href="http://i.jd.com/User/userinfo/showImg.html">头像照片</a></li>
+                                <li class="fore-3"><a href="http://i.jd.com/User/userinfo/more.html">更多个人信息</a></li>
                                 
                             </ul>
                         </div>
                         <div class="mc">
-                            <div class="user-set userset-lcol">
+                            <div class="User-set userset-lcol">
                                 <div class="form">
                                     <div class="item">
                                         <span class="label"><em>*</em>昵称：</span>
@@ -170,18 +170,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="user-info">
+                            <div id="User-info">
                                 <div class="u-pic">
                                     <img alt="用户头像" src="/images/defaultImgs/1.jpg">
                                     <div class="mask"></div>
                                     <div class="face-link-box"></div>
-                                    <a href="http://i.jd.com/user/userinfo/showImg.html" class="face-link">修改头像</a>
+                                    <a href="http://i.jd.com/User/userinfo/showImg.html" class="face-link">修改头像</a>
                                 </div>
                                 <div class="info-m">
 									<div><b>用户名：dh189</b></div>
                                     <div class="u-level">
 										<span class="rank r4">
-											<s></s><a href="http://usergrade.jd.com/user/grade" target="_blank">金牌会员</a>
+											<s></s><a href="http://usergrade.jd.com/User/grade" target="_blank">金牌会员</a>
 										</span>
                                     </div>
                                     <div class="shop-level">购物行为评级：<span><a target="_blank" href="http://help.jd.com/help/question-57.html#help2173">
@@ -190,7 +190,7 @@
                                 </div>
                             </div>
 							<div class="fr ac" style="width:280px;">
-								  注：修改手机和邮箱请到<a class="ml5 ftx05" href="http://safe.jd.com/user/paymentpassword/safetyCenter.action">账户安全</a>
+								  注：修改手机和邮箱请到<a class="ml5 ftx05" href="http://safe.jd.com/User/paymentpassword/safetyCenter.action">账户安全</a>
 							</div>
                             <div class="clr"></div>
 							

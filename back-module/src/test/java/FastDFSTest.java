@@ -1,5 +1,4 @@
 
-import com.shop.dev.utils.FastDFSUtils;
 import org.apache.commons.io.IOUtils;
 import org.csource.common.MyException;
 import org.csource.fastdfs.*;

@@ -1,15 +1,21 @@
 package com.shop.dev.repository;
 
-import com.shop.dev.entity.User;
+import com.shop.dev.entity.MyInfo;
+import com.shop.dev.entity.UserInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-/**
- * @ClassName UserRepository
- * @Author 刘树青
- * @Date 2018/11/8 9:19
- * @Version 1.0
- */
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<UserInfo,Long> {
+    /**
+     * 按username查
+     * @param username
+     * @return
+     * lhw
+     */
+    UserInfo findByUsername(String username);
+    UserInfo findByPhone(String phone);
 
-    User findByUsername(String username);
+
+
+
+
 }

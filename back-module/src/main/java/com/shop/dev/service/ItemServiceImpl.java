@@ -91,7 +91,7 @@ public class ItemServiceImpl implements ItemService {
 
         //添加商品描述
         ItemDesc itemDesc = new ItemDesc();
-        itemDesc.setItemId(item1.getId());
+        itemDesc.setItemId(item1.getItemId());
         itemDesc.setItemDesc(desc);
         itemDesc.setCreated(timestamp);
         itemDesc.setUpdated(timestamp);
@@ -100,7 +100,7 @@ public class ItemServiceImpl implements ItemService {
 
         //把商品的规格参数插入到 商品规格和商品的关系表tb_item_param_item 中
         ItemParamItem itemParamItem = new ItemParamItem();
-        itemParamItem.setItemId(item1.getId());
+        itemParamItem.setItemId(item1.getItemId());
         itemParamItem.setParamData(itemParams);
         itemParamItem.setCreated(timestamp);
         itemParamItem.setUpdated(timestamp);
@@ -122,7 +122,7 @@ public class ItemServiceImpl implements ItemService {
     @CacheEvict(value = "itemService", allEntries = true)
     @Override
     public ShopResult updateItem(Item item, String desc, String itemParams) {
-        Item item1 = this.itemRepository.getOne(item.getId());
+        Item item1 = this.itemRepository.getOne(item.getItemId());
         item.setStatus(item1.getStatus());
         item.setCreated(item1.getCreated());
         // 1.根据商品id更新商品表
@@ -131,17 +131,17 @@ public class ItemServiceImpl implements ItemService {
         this.itemRepository.saveAndFlush(item);
         // 2.根据商品id更新商品描述表
         ItemDesc itemDesc = new ItemDesc();
-        itemDesc.setItemId(item1.getId());
+        itemDesc.setItemId(item1.getItemId());
         itemDesc.setItemDesc(desc);
 
-        ItemDesc itemDesc1 = this.itemDescRepository.getOne(item.getId());
+        ItemDesc itemDesc1 = this.itemDescRepository.getOne(item.getItemId());
         itemDesc.setCreated(itemDesc1.getCreated());
         itemDesc.setUpdated(timestamp);
         this.itemDescRepository.saveAndFlush(itemDesc);
 
         // 3.根据商品id更新 商品规格和商品的关系表tb_item_param_item
         ItemParamItem itemParamItem = new ItemParamItem();
-        itemParamItem.setItemId(item1.getId());
+        itemParamItem.setItemId(item1.getItemId());
         itemParamItem.setParamData(itemParams);
         itemParamItem.setCreated(itemDesc1.getCreated());
         itemParamItem.setUpdated(timestamp);

@@ -10,7 +10,7 @@
     <thead>
     <tr>
         <th data-options="field:'ck',checkbox:true"></th>
-        <th data-options="field:'id',width:60">商品ID</th>
+        <th data-options="field:'itemId',width:60">商品ID</th>
         <th data-options="field:'title',width:200">商品标题</th>
         <th data-options="field:'cid',width:100">叶子类目</th>
         <th data-options="field:'sellPoint',width:100">卖点</th>
@@ -34,7 +34,7 @@
         var sels = itemList.datagrid("getSelections");
         var ids = [];
         for (var i in sels) {
-            ids.push(sels[i].id);
+            ids.push(sels[i].itemId);
         }
         ids = ids.join(",");
         return ids;
@@ -68,7 +68,7 @@
                     $("#itemeEditForm").form("load", data);
 
                     // 加载商品描述
-                    $.getJSON('/item/desc/' + data.id, function (_data) {
+                    $.getJSON('/item/desc/' + data.itemId, function (_data) {
                         if (_data.status == 200) {
                             //UM.getEditor('itemeEditDescEditor').setContent(_data.data.itemDesc, false);
                             itemEditEditor.html(_data.data.itemDesc);
@@ -76,7 +76,7 @@
                     });
 
                     //加载商品规格
-                    $.getJSON('/item/param/item/query/' + data.id, function (_data) {
+                    $.getJSON('/item/param/item/query/' + data.itemId, function (_data) {
                         if (_data && _data.status == 200 && _data.data && _data.data.paramData) {
                             $("#itemeEditForm .params").show();
                             $("#itemeEditForm [name=itemParams]").val(_data.data.paramData);

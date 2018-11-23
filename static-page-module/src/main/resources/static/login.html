@@ -59,8 +59,13 @@
     </div>
 </form>
 <script type="text/javascript">
-    var redirectUrl = "${redirect}";
+    // var redirectUrl = "${redirect}";
     var LOGIN = {
+
+        param: {
+            //单点登录系统的url
+            surl: "http://localhost:8770"
+        },
         checkInput:function() {
             if ($("#loginname").val() == "") {
                 alert("用户名不能为空");
@@ -75,16 +80,17 @@
             return true;
         },
         doLogin:function() {
-            $.post("/user/login", $("#formlogin").serialize(),function(data){
-                if (data.status == 200) {
+            $.post(LOGIN.param.surl+"/user/login", $("#formlogin").serialize(),function(data){
+                if (data.code == 200) {
                     alert("登录成功！");
-                    if (redirectUrl == "") {
-                        location.href = "http://localhost:8082";
-                    } else {
-                        location.href = redirectUrl;
-                    }
+                    // location.href=""
+                    // if (redirectUrl == "") {
+                    //     location.href = "http://localhost:8999";
+                    // } else {
+                    //     location.href = redirectUrl;
+                    // }
                 } else {
-                    alert("登录失败，原因是：" + data.msg);
+                    alert("登录失败，原因是：" + data.message);
                     $("#loginname").select();
                 }
             });

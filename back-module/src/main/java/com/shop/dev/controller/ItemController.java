@@ -43,9 +43,9 @@ public class ItemController {
 
 
     // 根据id获取商品描述
-    @RequestMapping(value = "/item/desc/{id}")
-    public ShopResult getItemDesc(@PathVariable("id") Long id) {
-        return this.itemService.getItemDesc(id);
+    @RequestMapping(value = "/item/desc/{itemId}")
+    public ShopResult getItemDesc(@PathVariable("itemId") Long itemId) {
+        return this.itemService.getItemDesc(itemId);
     }
 
 

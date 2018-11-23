@@ -1,6 +1,6 @@
 package com.shop.dev.controller;
 
-import com.shop.dev.utils.FastDFSUtils;
+import com.shop.dev.utils.fast_dfs.FastDFSUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;

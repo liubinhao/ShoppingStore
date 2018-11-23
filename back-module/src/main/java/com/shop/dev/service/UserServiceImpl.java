@@ -27,11 +27,17 @@ public class UserServiceImpl implements UserService {
      */
     @Cacheable(value = "userService")
     @Override
-    public boolean isLogin(String username, String password) {
+    public User findUser(String username, String password) {
         User user = this.userRepository.findByUsername(username);
         if (user.getPassword() != null && user.getPassword().equals(password)) {
-            return true;
+            return user;
         }
-        return false;
+        return null;
     }
+
+    @Override
+    public User findUser(String username) {
+        return this.userRepository.findByUsername(username);
+    }
+
 }

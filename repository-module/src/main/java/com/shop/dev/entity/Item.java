@@ -23,7 +23,6 @@ public class Item implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "item_id")
     private long itemId;
     private String title;
     private String sellPoint;

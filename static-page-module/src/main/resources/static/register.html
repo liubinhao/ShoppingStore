@@ -83,7 +83,7 @@
                         <div class="fl item-ifo">
                             <input type="text" id="phone" maxlength="11" name="phone"
                                    class="text" tabindex="4"
-                                   autocomplete="off" /> <i class="i-phone"></i> <label
+                                   autocomplete="off"/> <i class="i-phone"></i> <label
                                 id="phone_succeed" class="blank"></label> <label
                                 id="phone_error"></label>
                         </div>
@@ -111,12 +111,12 @@
         </form>
     </div>
     <script type="text/javascript">
-        var REGISTER={
-            param:{
+        var REGISTER = {
+            param: {
                 //单点登录系统的url
-                surl:""
+                surl: "http://localhost:8770"
             },
-            inputcheck:function(){
+            inputcheck: function () {
                 //不能为空检查
                 if ($("#regName").val() == "") {
                     alert("用户名不能为空");
@@ -142,16 +142,16 @@
                 }
                 return true;
             },
-            beforeSubmit:function() {
+            beforeSubmit: function () {
                 //检查用户是否已经被占用
                 $.ajax({
-                    url : REGISTER.param.surl + "/user/check/"+escape($("#regName").val())+"/1?r=" + Math.random(),
-                    success : function(data) {
-                        if (data.data) {
+                    url: REGISTER.param.surl + "/user/check?username="+$("#regName").val(),data:{phone:$("#phone").val()},
+                    success: function (data) {
+                        if (data.code != 422) {
                             //检查手机号是否存在
                             $.ajax({
-                                url : REGISTER.param.surl + "/user/check/"+$("#phone").val()+"/2?r=" + Math.random(),
-                                success : function(data) {
+                                url: REGISTER.param.surl + "/user/check?phone="+$("#phone").val(),data:{username: $("#regName").val()},
+                                success: function (data) {
                                     if (data.data) {
                                         REGISTER.doSubmit();
                                     } else {
@@ -168,9 +168,9 @@
                 });
 
             },
-            doSubmit:function() {
-                $.post("/user/register",$("#personRegForm").serialize(), function(data){
-                    if(data.status == 200){
+            doSubmit: function () {
+                $.post(REGISTER.param.surl+"/user/register", $("#personRegForm").serialize(), function (data) {
+                    if (data.code == 200) {
                         alert('用户注册成功，请登录！');
                         REGISTER.login();
                     } else {
@@ -178,11 +178,11 @@
                     }
                 });
             },
-            login:function() {
-                location.href = "/page/login";
+            login: function () {
+                location.href = "/login.html";
                 return false;
             },
-            reg:function() {
+            reg: function () {
                 if (this.inputcheck()) {
                     this.beforeSubmit();
                 }
