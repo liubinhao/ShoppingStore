@@ -1,6 +1,6 @@
 package com.shop.dev.service;
 
-import com.shop.dev.entity.User;
+import com.shop.dev.entity.UserInfo;
 
 /**
  * @ClassName UserService
@@ -11,7 +11,7 @@ import com.shop.dev.entity.User;
 public interface UserService {
 
     // 后台:校验是否登录成功
-    User findUser(String username, String password);
+    UserInfo findUser(String username, String password);
 
-    User findUser(String username);
+    UserInfo findUser(String username);
 }

@@ -1,7 +1,7 @@
 package com.shop.dev.service;
 
-import com.shop.dev.repository.UserRepository;
-import com.shop.dev.entity.User;
+import com.shop.dev.entity.UserInfo;
+import com.shop.dev.repository.UserInfoRepository;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 public class UserServiceImpl implements UserService {
 
     @Resource
-    private UserRepository userRepository;
+    private UserInfoRepository userInfoRepository;
 
     /**
      * @Author 刘树青
@@ -27,8 +27,8 @@ public class UserServiceImpl implements UserService {
      */
     @Cacheable(value = "userService")
     @Override
-    public User findUser(String username, String password) {
-        User user = this.userRepository.findByUsername(username);
+    public UserInfo findUser(String username, String password) {
+        UserInfo user = this.userInfoRepository.findByUsername(username);
         if (user.getPassword() != null && user.getPassword().equals(password)) {
             return user;
         }
@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUser(String username) {
-        return this.userRepository.findByUsername(username);
+    public UserInfo findUser(String username) {
+        return this.userInfoRepository.findByUsername(username);
     }
 
 }

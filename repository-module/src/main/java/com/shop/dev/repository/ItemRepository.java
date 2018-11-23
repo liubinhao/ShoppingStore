@@ -16,7 +16,7 @@ import java.util.List;
  */
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
-    @Query(value = "select count(*) from shop.tb_item", nativeQuery = true)
+    @Query(value = "select count(*) from tb_item", nativeQuery = true)
     long findByCount();
 
     @Modifying

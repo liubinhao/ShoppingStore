@@ -83,6 +83,7 @@
             $.post(LOGIN.param.surl+"/user/login", $("#formlogin").serialize(),function(data){
                 if (data.code == 200) {
                     alert("µÇÂ¼³É¹¦£¡");
+                    window.location.href='http://localhost:8999';
                     // location.href=""
                     // if (redirectUrl == "") {
                     //     location.href = "http://localhost:8999";
@@ -108,7 +109,6 @@
         });
     });
 
-    $.session.set('aaa','ÎâÅ£±Æ');
 
 </script>
 </body>

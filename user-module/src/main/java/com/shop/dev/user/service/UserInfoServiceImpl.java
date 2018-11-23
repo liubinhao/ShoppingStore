@@ -1,8 +1,7 @@
 package com.shop.dev.user.service;
 
-import com.shop.dev.entity.MyInfo;
 import com.shop.dev.entity.UserInfo;
-import com.shop.dev.repository.UserRepository;
+import com.shop.dev.repository.UserInfoRepository;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 
     @Resource
-    private UserRepository userRepository;
+    private UserInfoRepository userInfoRepository;
 
 
     /**
@@ -27,7 +26,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public UserInfo loginByUsername(String username, String password) {
         Md5Hash md5Hash = new Md5Hash(password,"salt");
-        UserInfo userInfo = userRepository.findByUsername(username);
+        UserInfo userInfo = userInfoRepository.findByUsername(username);
         if (userInfo != null && userInfo.getPassword().equals(String.valueOf(md5Hash))) {
             return userInfo;
         }
@@ -48,7 +47,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfo.setUpdated(new Timestamp(System.currentTimeMillis()));
         Md5Hash md5Hash = new Md5Hash(userInfo.getPassword(),"salt");
         userInfo.setPassword(String.valueOf(md5Hash));
-        userRepository.save(userInfo);
+        userInfoRepository.save(userInfo);
         return true;
     }
 
@@ -61,7 +60,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public UserInfo findById(Long userId) {
-        return userRepository.getOne(userId);
+        return userInfoRepository.getOne(userId);
     }
 
     /**
@@ -71,7 +70,7 @@ public class UserInfoServiceImpl implements UserInfoService {
      */
     @Override
     public UserInfo findByUsername(String username) {
-        UserInfo userInfo = userRepository.findByUsername(username);
+        UserInfo userInfo = userInfoRepository.findByUsername(username);
         return userInfo;
     }
 
@@ -82,7 +81,7 @@ public class UserInfoServiceImpl implements UserInfoService {
      */
     @Override
     public UserInfo findByPhone(String phone) {
-        UserInfo userInfo = userRepository.findByPhone(phone);
+        UserInfo userInfo = userInfoRepository.findByPhone(phone);
         return userInfo;
     }
 
