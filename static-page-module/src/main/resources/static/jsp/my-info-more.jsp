@@ -30,14 +30,14 @@
             <div class="mod-main">
                         <div class="mt">
                             <ul class="extra-l">
-                                <li class="fore-1"><a href="http://i.jd.com/user/info">基本信息</a></li>
-                                <li class="fore-2"><a href="http://i.jd.com/user/userinfo/showImg.html">头像照片</a></li>
-                                <li class="fore-3"><a class="curr" href="http://i.jd.com/user/userinfo/more.html">更多个人信息</a></li>
+                                <li class="fore-1"><a href="http://i.jd.com/User/info">基本信息</a></li>
+                                <li class="fore-2"><a href="http://i.jd.com/User/userinfo/showImg.html">头像照片</a></li>
+                                <li class="fore-3"><a class="curr" href="http://i.jd.com/User/userinfo/more.html">更多个人信息</a></li>
 								
                             </ul>
                         </div>
                         <div class="mc">
-                            <div class="user-set">
+                            <div class="User-set">
                                 <div class="form">
 
                                     <div class="item">
