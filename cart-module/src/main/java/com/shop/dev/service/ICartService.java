@@ -1,15 +1,25 @@
 package com.shop.dev.service;
 
+import com.shop.dev.commons.ResultWrapper;
 import com.shop.dev.controller.param.ItemParam;
-import com.shop.dev.entity.Item;
 
 import java.util.List;
-import java.util.Map;
 
 public interface ICartService {
 
-    ItemParam addItem(ItemParam itemParam);
+    void addItem(ItemParam itemParam);
 
-    List<?> showItemInformation(Long userId);
+    List<?> showItemInformation();
+
+    void removeItem(Long itemId);
+
+    void updateItemQuantity(Long itemId, Integer buyNum);
+
+    ResultWrapper batchDel(String keys);
+
+    ResultWrapper findItemByItemId(Long itemId);
+
+    ResultWrapper findShoppingList(String itemIds);
+
 
 }

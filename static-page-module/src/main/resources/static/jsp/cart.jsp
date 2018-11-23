@@ -52,43 +52,43 @@
         <div class="column t-quantity">数量</div>
         <div class="column t-action">操作</div>
     </div>
-    <div id="product-list" class="cart-tbody">
+    --<div id="product-list" class="cart-tbody">
         <!-- ************************商品开始********************* -->
         <c:set var="totalPrice" value="0"></c:set>
         <c:forEach items="${cartList}" var="cart">
         	<c:set var="totalPrice"  value="${ totalPrice + (cart.price * cart.num)}"/>
-	        <div id="product_11345721" data-bind="rowid:1" class="item item_selected ">
-		        <div class="item_form clearfix">
-		            <div class="cell p-checkbox"><input data-bind="cbid:1" class="checkbox" type="checkbox" name="checkItem" checked="" value="11345721-1"></div>
-		            <div class="cell p-goods">
+	        + <div id="product_11345721" data-bind="rowid:1" class="item item_selected ">
+		        --- <div class="item_form clearfix">
+		           <div class="cell p-checkbox"><input data-bind="cbid:1" class="checkbox" type="checkbox" name="checkItem" checked="" value="11345721-1"></div>
+               ++ <div class="cell p-goods">
 		                <div class="p-img">
 		                	<a href="/item/${cart.id }.html" target="_blank">
 		                		<img clstag="clickcart|keycount|xincart|p-imglistcart" src="${cart.images[0]}" alt="${cart.title}" width="52" height="52">
 		                	</a>
-		                </div>    
+		                </div>
 		                <div class="p-name">
 		                	<a href="/item/${cart.id }.html" clstag="clickcart|keycount|xincart|productnamelink" target="_blank">${cart.title}</a>
 		                	<span class="promise411 promise411_11345721" id="promise411_11345721"></span>
-		                </div>    
-		            </div>
+		                </div>
+		        ++  </div>
 		            <div class="cell p-price"><span class="price">¥<fmt:formatNumber groupingUsed="false" value="" maxFractionDigits="2" minFractionDigits="2"/> </span></div>
-		            <div class="cell p-promotion">
-		            </div>
+		            <div class="cell p-promotion"></div>
 		            <div class="cell p-inventory stock-11345721">有货</div>
-		            <div class="cell p-quantity" for-stock="for-stock-11345721">
+		             * <div class="cell p-quantity" for-stock="for-stock-11345721">
 		                <div class="quantity-form" data-bind="">
 		                    <a href="javascript:void(0);" class="decrement" clstag="clickcart|keycount|xincart|diminish1" id="decrement">-</a>
 		                    <input type="text" class="quantity-text" itemPrice="${cart.price}" itemId="${cart.id}" value="${cart.num }" id="changeQuantity-11345721-1-1-0">
 		                    <a href="javascript:void(0);" class="increment" clstag="clickcart|keycount|xincart|add1" id="increment">+</a>
 		                </div>
-		            </div>
-		            <div class="cell p-remove"><a id="remove-11345721-1" data-more="removed-87.20-1" clstag="clickcart|keycount|xincart|btndel318558" class="cart-remove" href="/cart/delete/${cart.id}.html">删除</a>
-		            </div>
-		        </div>
-	        </div> 
+		            * </div>
+		            <div class="cell p-remove"><a id="remove-11345721-1" data-more="removed-87.20-1" clstag="clickcart|keycount|xincart|btndel318558" class="cart-remove" href="/cart/delete/${cart.id}.html">删除</a></div>
+		      --- </div>
+	       + </div>
         </c:forEach>
         
-    </div><!-- product-list结束 -->
+    --</div><!-- product-list结束 -->
+
+
           <div class="cart-toolbar clearfix">
             <div class="total fr">
                 <p><span class="totalSkuPrice">¥<fmt:formatNumber value="" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></span>总计：</p>
@@ -96,8 +96,11 @@
             </div>
             <div class="amout fr"><span id="selectedCount">1</span> 件商品</div>
         </div>
-        <div class="ui-ceilinglamp-1" style="width: 988px; height: 49px;"><div class="cart-dibu ui-ceilinglamp-current" style="width: 988px; height: 49px;">
-          <div class="control fdibu fdibucurrent">
+
+    <div class="ui-ceilinglamp-1" style="width: 988px; height: 49px;"></div><div class="cart-dibu ui-ceilinglamp-current" style="width: 988px; height: 49px;"></div>
+
+
+            <div class="control fdibu fdibucurrent">
               <span class="column t-checkbox form">
                   <input data-cart="toggle-cb" name="toggle-checkboxes" id="toggle-checkboxes_down" type="checkbox" checked="" value="" class="jdcheckbox">
                   <label for="toggle-checkboxes_down">
@@ -117,6 +120,8 @@
                   <a href="/" target="_blank" clstag="clickcart|keycount|xincart|coudanlink" id="continue">继续购物</a>
               </span>
           </div>
+
+
           <div class="cart-total-2014">
               <div class="cart-button">
                   <span class="check-comm-btns" id="checkout-jd">
@@ -137,10 +142,16 @@
                   <span class="totalSkuPrice">¥<fmt:formatNumber value="" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></span>
               </div>
           </div>
-      </div></div>
+
+
+
 </div><!-- cart-inner结束 -->
+
+
+    </div>
 </div>
-</div>
+
+</body>
 <!--推荐位html修改处-->
 
 

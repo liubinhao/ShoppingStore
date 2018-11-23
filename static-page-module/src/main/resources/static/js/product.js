@@ -971,7 +971,8 @@ var Refresh = {init: function() {
             }})
     },setABTest: function(t) {
         var e = document.getElementsByTagName("head")[0], i = document.createElement("script");
-        t && t.jwotest_product !== void 0 && (1 > $("#gemini_comment_sort" + t.jwotest_product).length && $("body").append('<div id="gemini_comment_sort' + t.jwotest_product + '"></div>'), i.type = "text/javascript", i.async = !0, i.id = "gemini_divide_script", i.setAttribute("param", "[{t:24}]"), i.setAttribute("cTime", "1387864948704"), i.src = "http://api.gemini.jd.com/gemini/gemini_v1.0.js", e.appendChild(i))
+        // t && t.jwotest_product !== void 0 && (1 > $("#gemini_comment_sort" + t.jwotest_product).length && $("body").append('<div id="gemini_comment_sort' + t.jwotest_product + '"></div>'), i.type = "text/javascript", i.async = !0, i.id = "gemini_divide_script", i.setAttribute("param", "[{t:24}]"), i.setAttribute("cTime", "1387864948704"), i.src = "http://api.gemini.jd.com/gemini/gemini_v1.0.js", e.appendChild(i))
+        t && t.jwotest_product !== void 0 && (1 > $("#gemini_comment_sort" + t.jwotest_product).length && $("body").append('<div id="gemini_comment_sort' + t.jwotest_product + '"></div>'), i.type = "text/javascript", i.async = !0, i.id = "gemini_divide_script", i.setAttribute("param", "[{t:24}]"), i.setAttribute("cTime", "1387864948704"), e.appendChild(i))
     },setData: function(t) {
         return t || (this.wrap.html("\u3000\u6682\u65e0\u8bc4\u8bba"), this.commRate.find(".mc").html("\u3000\u6682\u65e0\u8bc4\u8bba")), t.comments === void 0 ? (this.wrap.html('<div class="norecode"> \u6682\u65e0\u5546\u54c1\u8bc4\u4ef7\uff01</div>'), void 0) : (this.commRateLoaded === !1 && this.setCommRate($("#comment"), t), t._type = this.type, this.setCommentCount(t), this.wrap.html(newCommentList_TPL.process(t)), this.bindReply(), this.setPageNav(t), this.loadFirstPage = !0, void 0)
     },setPageNav: function(t) {
