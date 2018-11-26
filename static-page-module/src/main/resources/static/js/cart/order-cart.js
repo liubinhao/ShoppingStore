@@ -1,3 +1,5 @@
+let cartUrl = 'http://172.16.16.87:8780/';
+
 
 let itemList = window.localStorage.getItem("itemList");
 let totalPrice = window.localStorage.getItem("totalPrice");

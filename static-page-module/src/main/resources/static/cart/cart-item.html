@@ -8,6 +8,9 @@
     <link rel="stylesheet" type="text/css" href="/css/taotao.css" media="all" />
     <link rel="stylesheet" type="text/css" href="/css/pshow.css" media="all" />
     <script type="text/javascript">
+
+        console.log("dfdf");
+        console.log(cartUrl);
         window.pageConfig = {
             compatible: true,
             product: {
@@ -259,10 +262,13 @@
 <!-- footer end -->
 <script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
 <script type="text/javascript" src="/js/lib-v1.js"></script>
-<script type="text/javascript" src="/js/uri/cart-uri.js"/>
 <script type="text/javascript" src="/js/product.js"></script>
 <script type="text/javascript" src="/js/iplocation_server.js"></script>
+
 <script type="text/javascript">
+
+    let cartUrl = 'http://172.16.16.87:8780/';
+
     var itemControl = {
         param:{
             descUrl:"/item/desc/",
