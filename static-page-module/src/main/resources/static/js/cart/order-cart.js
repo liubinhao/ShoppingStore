@@ -9,7 +9,6 @@ $('#sumPayPriceId').text(totalPrice);
 $('#payPriceId').text(totalPrice);
 
 
-// let url = 'http://localhost:8780/cart/findShoppingList';
 let url = cartUrl + 'cart/findShoppingList';
 let param = {itemIds: itemList};
 
