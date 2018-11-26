@@ -5,7 +5,6 @@
     <title>登录商城</title>
     <link type="text/css" rel="stylesheet" href="/css/login.css"/>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
-    <script src="sss.js"></script>
 </head>
 <body>
 <div class="w">
@@ -64,7 +63,7 @@
 
         param: {
             //单点登录系统的url
-            surl: "http://localhost:8770"
+            surl: 'http://172.16.16.87:8770/'
         },
         checkInput:function() {
             if ($("#loginname").val() == "") {
@@ -80,10 +79,11 @@
             return true;
         },
         doLogin:function() {
-            $.post(LOGIN.param.surl+"/user/login", $("#formlogin").serialize(),function(data){
+            $.post(LOGIN.param.surl+"user/login", $("#formlogin").serialize(),function(data){
                 if (data.code == 200) {
+                    window.localStorage.setItem("token", data.data);
                     alert("登录成功！");
-                    window.location.href='http://localhost:8999';
+                    window.location.href='/index.html';
                     // location.href=""
                     // if (redirectUrl == "") {
                     //     location.href = "http://localhost:8999";

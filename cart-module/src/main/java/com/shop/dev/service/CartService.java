@@ -48,7 +48,6 @@ public class CartService implements ICartService {
 
     // 查看购物车中所有的商品
     @Override
-    @Cacheable(value = "cartService")
     public List<?> showItemInformation() {
         HashOperations<Object, Object, Object> hash = redisTemplate.opsForHash();
         String key = "userId:" + userId;
@@ -77,6 +76,7 @@ public class CartService implements ICartService {
     @Override
     public void updateItemQuantity(Long itemId, Integer buyNum) {
         HashOperations<Object, Object, Object> hash = redisTemplate.opsForHash();
+        System.out.println(itemId + "..." + buyNum);
         hash.put("userId:100", "itemId:"+ itemId, buyNum.toString());
     }
 

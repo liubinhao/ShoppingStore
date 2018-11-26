@@ -22,7 +22,7 @@ public class UserInfo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "user_id")
     private Long userId;
     @NotBlank(message = "用户名不能为空")
     private String username;

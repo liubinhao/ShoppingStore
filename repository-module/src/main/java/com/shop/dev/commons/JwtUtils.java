@@ -19,9 +19,14 @@ public class JwtUtils {
      * @param
      * @return
      */
+
     public static String newToken(Long userId){
-        return newToken(userId,Constants.DEFAULT_EXPIRED);
+        return JWT.create().withClaim("userId",userId)
+                            .withIssuedAt(new Date())
+                            .withExpiresAt(new Date(System.currentTimeMillis() + Constants.DEFAULT_EXPIRED))
+                            .sign(Algorithm.HMAC256(Constants.SECRET_KEY));
     }
+
     public static String newToken(Long userId, long expiredSeconds) {
         return JWT.create().withClaim("userId", userId)
                 .withIssuedAt(new Date())
@@ -29,6 +34,8 @@ public class JwtUtils {
                 .sign(Algorithm.HMAC256(Constants.SECRET_KEY));
 
     }
+
+
 
     /**
      * 校验token是否合法

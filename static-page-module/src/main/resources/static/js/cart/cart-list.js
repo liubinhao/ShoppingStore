@@ -1,4 +1,6 @@
 
+let token = window.localStorage.getItem("token");
+console.log('token=' + token);
 $(function () {
 
 $.ajaxSetup({
@@ -15,7 +17,8 @@ $.ajaxSetup({
     $('.removeItem').click(function () {
 
         let itemId = $(this).attr('itemId');
-        let url = 'http://localhost:8780/cart/cartRemItem/'+itemId+'';
+        // let url = 'http://localhost:8780/cart/cartRemItem/'+itemId+'';
+        let url =  cartUrl + 'cart/cartRemItem/'+itemId+'';
         let param = {
             itemId: itemId
         };
@@ -42,7 +45,8 @@ $.ajaxSetup({
         });
 
         if (arr.length != 0){
-            let url = 'http://localhost:8780/cart/batchRem';
+            // let url = 'http://localhost:8780/cart/batchRem';
+            let url = cartUrl + 'cart/batchRem';
 
             $.ajax({
                type: 'post',
@@ -119,11 +123,16 @@ $.ajaxSetup({
 
 
 function showItemList() {
-    let url = 'http://localhost:8780/cart/showItem';
+    // let url = 'http://localhost:8780/cart/showItem';
+    let settings = {
+        url : cartUrl + 'cart/showItem',
+        method: 'get'
+        // ,headers: {"Authentication": token}
+    };
     // let params = {
     //     "userId": 100
     // };
-    $.post(url, callBack);
+    $.ajax(settings).done(callBack)
 
     function callBack(resp) {
         if (resp.status == true) {

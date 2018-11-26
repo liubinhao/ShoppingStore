@@ -5,10 +5,11 @@ import com.shop.dev.commons.ResultWrapper;
 import com.shop.dev.controller.param.ItemParam;
 import com.shop.dev.service.ICartService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.support.HttpRequestHandlerServlet;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
-import java.util.Arrays;
 import java.util.List;
 
 // author: mrd
@@ -37,8 +38,9 @@ public class CartController {
      * @return
      */
     @RequestMapping("/showItem")
-    public Object showItem(){
-
+    public Object showItem(HttpServletRequest req){
+        String token = req.getHeader("Authentication");
+        System.out.println("token:" + token);
         List<?> list = this.iCartService.showItemInformation();
         return ResultWrapper.success(list);
     }
@@ -61,7 +63,7 @@ public class CartController {
     public ResultWrapper removeItem(@PathVariable Long itemId){
         System.out.println("删除接收到的:" + itemId);
 
-//        this.iCartService.removeItem(itemId);
+        this.iCartService.removeItem(itemId);
         return ResultWrapper.success("删除商品Id:"+itemId+"成功");
     }
 
@@ -85,6 +87,7 @@ public class CartController {
      */
     @PostMapping("/updItemNum/{itemId}/{buyNum}")
     public ResultWrapper updItemNum(@PathVariable Long itemId, @PathVariable Integer buyNum){
+        System.out.println("controller:" + itemId + "..." + buyNum);
         this.iCartService.updateItemQuantity(itemId, buyNum);
         return ResultWrapper.success("更新商品数量成功");
     }

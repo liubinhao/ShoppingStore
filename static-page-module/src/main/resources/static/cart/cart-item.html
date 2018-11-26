@@ -259,6 +259,7 @@
 <!-- footer end -->
 <script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
 <script type="text/javascript" src="/js/lib-v1.js"></script>
+<script type="text/javascript" src="/js/uri/cart-uri.js"/>
 <script type="text/javascript" src="/js/product.js"></script>
 <script type="text/javascript" src="/js/iplocation_server.js"></script>
 <script type="text/javascript">
@@ -305,9 +306,9 @@
 
     ;
 
-
    let itemId = window.localStorage.getItem("itemId");
-   let url = 'http://localhost:8780/cart/item/'+itemId+'';
+   // let url = 'http://localhost:8780/cart/item/'+itemId+'';
+   let url = cartUrl + 'cart/item/'+itemId+'';
    let param = {itemId: itemId};
    $.get(url, param, function (resp) {
 
@@ -332,7 +333,8 @@
 
    $('#InitCartUrl').click(function () {
        let buyNum = $('#buy-num').val();
-       let url = 'http://localhost:8780/cart/addItem';
+       // let url = 'http://localhost:8780/cart/addItem';
+       let url = cartUrl + 'cart/addItem';
        let params = {
            itemId: itemId,
            itemNum: buyNum

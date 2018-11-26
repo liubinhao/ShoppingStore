@@ -13,6 +13,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Resource
     private CrossDomainInteceptor crossDomainInteceptor;
 
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(crossDomainInteceptor).addPathPatterns("/**").excludePathPatterns("/login");

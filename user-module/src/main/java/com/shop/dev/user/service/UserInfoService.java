@@ -1,6 +1,6 @@
 package com.shop.dev.user.service;
 
-import com.shop.dev.entity.MyInfo;
+
 import com.shop.dev.entity.UserInfo;
 
 public interface UserInfoService {
@@ -12,7 +12,7 @@ public interface UserInfoService {
      * @return
      * lhw
      */
-    UserInfo loginByUsername(String username,String password);
+    UserInfo loginByUsername(String username, String password);
 
 
 
