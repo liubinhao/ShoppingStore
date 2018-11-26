@@ -57,11 +57,10 @@
             </div>
             <div class="mc">
                 <div class="checkout-steps">
-                    <!--  /widget/consignee-step/consignee-step.tpl -->
                     <div class="step-tit">
                         <h3>收货人信息</h3>
                         <div class="extra-r">
-                            <a href="#none" class="ftx-05" onclick="use_NewConsignee()">新增收货地址</a>
+                            <a href="save.html" class="ftx-05" onclick="use_NewConsignee()">新增收货地址</a>
                         </div>
                     </div>
                     <div class="step-cont">
@@ -101,9 +100,7 @@
                             </div>
                         </div>
                     </div>
-                    <!--/ /widget/consignee-step/consignee-step.tpl -->
 
-                    <!--/ /widget/shopping-list/shopping-list.tpl -->
                     <div id="shipAndSkuInfo">
                         <div id="payShipAndSkuInfo">
                             <div class="step-tit">
@@ -168,7 +165,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--/ /widget/payment-step/payment-step.tpl -->
+
                             <div class="step-tit">
                                 <h3>送货清单</h3>
                                 <div class="extra-r">
@@ -183,34 +180,7 @@
                                             <!--配送方式-->
                                             <h4 class="vendor_name_h" id="0">商家：shop商城</h4>
                                             <div class="goods-suit goods-last" id="goods-list">
-                                                <!--<c:forEach items="${cartList }" var="cart">-->
-                                                    <!--<div class="goods-item goods-item-extra">-->
 
-                                                        <!--<div class="p-img">-->
-                                                            <!--<a target="_blank" href="/item/${cart.id}.html">-->
-                                                                <!--<img src="${cart.images[0]}" alt="">-->
-                                                            <!--</a>-->
-                                                        <!--</div>-->
-                                                        <!--<div class="goods-msg">-->
-                                                            <!--<div class="p-name">-->
-                                                                <!--<a href="/item/${cart.id}.html" target="_blank">-->
-                                                                    <!--${cart.title }-->
-                                                                <!--</a>-->
-                                                            <!--</div>-->
-                                                            <!--<div class="p-price">-->
-                                                                <!--&lt;!&ndash;增加预售金额显示 begin   预售分阶段支付类型（1：一阶梯全款支付；2：一阶梯定金支付(全款或定金可选)；3：三阶梯仅定金支付） &ndash;&gt;-->
-                                                                <!--<strong>￥<fmt:formatNumber-->
-                                                                        <!--groupingUsed="false" maxFractionDigits="2"-->
-                                                                        <!--minFractionDigits="2" value="${cart.price / 100 }" /></strong>-->
-                                                                <!--&lt;!&ndash;增加预售金额显示 end&ndash;&gt;-->
-                                                                <!--<span class="ml20"> x${cart.num} </span>-->
-                                                                <!--<span class="ml20 p-inventory" skuId="11555193">有货</span>-->
-                                                            <!--</div>-->
-                                                            <!--<i class="p-icon p-icon-w"></i><span class="ftx-04">7天无理由退货</span>-->
-                                                        <!--</div>-->
-                                                        <!--<div class="clr"></div>-->
-                                                    <!--</div>-->
-                                                <!--</c:forEach>-->
                                             </div>
                                         </div>
                                         <!--goods-list 结束-->

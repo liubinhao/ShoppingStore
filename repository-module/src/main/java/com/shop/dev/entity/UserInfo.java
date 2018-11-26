@@ -8,10 +8,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Objects;
 
 /**
- * 用户信息
- * lhw
+ * @ClassName User
+ * @Author 刘树青
+ * @Date 2018/11/7 17:16
+ * @Version 1.0
  */
 @Entity
 @Table(name = "tb_user")
@@ -19,7 +22,6 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserInfo implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")

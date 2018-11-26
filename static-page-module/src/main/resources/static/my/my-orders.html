@@ -14,52 +14,36 @@
 <script src="https://cdn.bootcss.com/jquery/3.3.1/core.js"></script>
 
 <script language="javascript" type="text/javascript">
-    var url = "http://localhost:8775";
+    var url = "http://localhost:8775"
 
-    //分页
-    var size = 2;
-    var curentpage = 0;
     $(function () {
-        //分页
-        $('#prePage').click(function () {
-            if (curentpage == 0) {
-                $.get(url + "/order/findOrderByUserId/1" + "/" + curentpage + "/" + size, orderFind)
-            } else {
-                curentpage--;
-                $.get(url + "/order/findOrderByUserId/1" + "/" + curentpage + "/" + size, orderFind)
-            }
-        });
-        $('#nextPage').click(function () {
-            console.log(totalCount);
-            console.log(curentpage);
-            if (curentpage == Math.ceil(totalCount / size) - 1) {
-                $.get(url + "/order/findOrderByUserId/1" + "/" + curentpage + "/" + size, orderFind)
-            } else {
-                curentpage++;
-                $.get(url + "/order/findOrderByUserId/1" + "/" + curentpage + "/" + size, orderFind)
-            }
-        });
+        $.get(url + "/order/findOrderByUserId/1", orderFind)
 
 
-        //首页查询
-        $.get(url + "/order/findOrderByUserId/1" + "/" + curentpage + "/" + size, orderFind);
+        // $(function () {
+        //     $('OrderSearch').click(function () {
+        //         $.get("/order/findByInfo/1", {info: $('#ip_keyword').val()}, orderFind)
+        //     })
+        // })
+
 
         $('#findById').click(function () {
             //获取Input标的的value值
             var orderId = $('#ip_keyword').val();
             $.get("http://localhost:8775/order/findOrderByOrderId/" + orderId, orderFind)
-
+            //  $.get("/order/deleteOrder/{orderId}", orderFind)
         })
-    });
+    })
 
 
     function orderFind(resp) {
-        totalCount = resp.data.totalCount;
         $('tbody').remove();
-        var tbody = $('<tbody></tbody>');
-        var tab = $('#table');
-        for (var order of resp.data.items) {
+        var tbody = $('<tbody></tbody>')
+
+        var tab = $('#table')
+        for (var order of resp.data) {
             var status = $('<td></td>');
+
             var tr1 = $('<tr class="tr-th"></tr>');
             var td2 = $('<td colspan="6"><span class="tcol1">\n' +
                 '                    订单编号:\n' +
@@ -70,8 +54,10 @@
                 '                                        <span class="tcol2">shop</span>\n' +
                 '                                        <span class="tcol3"><a class="btn-im" onclick="getPamsForChat()" href="#none" title="联系客服"></a></span></td>')
             tr1.append(td2);
+
             var tr = $('<tr></tr>')
             var td = $('<td></td>')
+
             switch (order.status) {
                 case 1:
                     status.text("未付款");
@@ -99,27 +85,23 @@
             var div = $('<div calss="img-list"></div>')
             for (var orderItem of order.orderItemList) {
                 // var itemImage = $('<td><img width="50" height="50" src=' + orderItem.item.image + '></td>')
-                var a = $('<a      class="img-box"\n' +
+                var a = $('<a    href="http://item.jd.com/1113410.html"    class="img-box"\n' +
                     '                        clstag="click|keycount|orderinfo|order_product"  target="_blank" ><img  width="50" height="50"\n' +
                     '                                                     src=' + orderItem.item.image + '\n' +
                     '                                                     class="err-product"></a>');
 
                 div.append(a)
             }
-            td.append(div);
+            td.append(div)
+
             var paym;
+
             switch (order.paymentType) {
                 case 1:
                     paym = "在线支付";
                     break;
                 case 2:
                     paym = "货到付款";
-                    break;
-                case 3:
-                    paym = "公司转账";
-                    break;
-                case 4:
-                    paym = "邮局汇款";
                     break;
             }
 
@@ -128,37 +110,85 @@
             }
             var td6 = $('<td class="order-doi" width="100" ><a target="_blank"\n' +
                 '                                           href="http://localhost:8999/order/info/show.html">查看</a><span\n' +
-                '                                            id="bvb "></span><span  class="pop-recycle-a">|<a\n' +
-                '                                            id="bvb "></span><span  class="pop-recycle-a">|<a\n' +
-                '                                            href="javascript:void(0)"  name=' + order.orderId + ' id="deleteOrder" clstag="click|keycount|orderinfo|order_del"\n' +
-                '                                            onclick="deleteOrder(this)" ">删除</span></a><span\n' +
+                '                                            id="bvb "></span><span class="pop-recycle-a">|<a\n' +
+                '                                            href="javascript:void(0)" id="oid" clstag="click|keycount|orderinfo|order_del"\n' +
+                '                                           ">删除</a></span><span\n' +
                 '                                            id="doi2538292730"><br><a\n' +
                 '                                            href="http://localhost:8999/order/info/appraisal.html">评价晒单</a><br></span><a\n' +
                 '                                            href="http://localhost:8999/order/info/change.html">申请返修/退换货</a>\n' +
                 '                                       </a><a class="btn-again" clstag="click|keycount|orderlist|buy"\n' +
                 '                                           href="http://cart.jd.com/cart/dynamic/reBuyForOrderCenter.action?wids=1113410,1222567&amp;nums=1,1&amp;rid=1419846299535"\n' +
                 '                                           target="_blank">还要买</a></td>');
-            tr.append(td).append(receiverName).append(totalFee).append(createTime).append(status).append(td6);
-            tbody.append(tr1);
-            tbody.append(tr);
+
+
+            tr.append(td).append(receiverName).append(totalFee).append(createTime).append(status).append(td6)
+            tbody.append(tr1)
+            tbody.append(tr)
             tab.append(tbody);
-
         }
-    }
-
-    function deleteOrder(obj) {
-        var orderId = $(obj).attr("name");
-        console.log(orderId);
-        $.get(url + "/order/deleteOrder/" + orderId, orderFind)
     }
 
     $(function () {
         $('#oid').click(function () {
             var params = $(this).parent().parent().children().eq(0).text();
             $.get("/order/deleteOrder/{params}")
+
+
         })
     })
+
+    /**
+     * 分页
+     * @param pages
+     * @param currentPage
+     */
+    function drawPageIndicator(pages, currentPage) {
+        var indicator = $('#pages');
+        indicator.empty();
+        var prePage = $('<a href="javascript:void(0)">上一页</a>')
+        prePage.click(onPreClick)
+        indicator.append(prePage);
+        for (var i = 0; i < pages; i++) {
+            var a = $('<a />').text(i + 1);
+            if (i + 1 == currentPage) {
+                a.addClass('current_page');
+            }
+            a.click(onIndicatorClick);
+            indicator.append(a);
+        }
+        var nextPage = $('<a href="javascript:void(0)">下一页</a>')
+        nextPage.click(onNextClick)
+        indicator.append(nextPage);
+
+    }
+
+
+    function onPreClick() {
+        params.page--;
+        params.page = params.page == 0 ? 1 : params.page;
+        getRemoteService();
+    }
+
+    function onNextClick() {
+        params.page++;
+        params.page = params.page > totalPage ? totalPage : params.page;
+        getRemoteService();
+    }
+    function onIndicatorClick() {
+        params.page = $(this).text();
+        getRemoteService();
+    }
+
+    // function deleteOrder(orderId) {
+    //     var url = '/deleteOrder';
+    //     var params = {id: orderId}
+    //     $.post(url,params)
+    // }
+
+
 </script>
+
+
 <body>
 <script type="text/javascript" src="/js/base-2011.js" charset="utf-8"></script>
 <!-- header start -->
@@ -170,6 +200,7 @@
 
 <div id="container">
     <div class="w">
+
         <div id="main">
             <div class="g-0">
                 <div id="content" class="c-3-5">
@@ -337,11 +368,11 @@
                         <div class="mt10">
                             <div class="pagin fr">
                                 <!--  <span class="text">共20条记录</span>    <span class="text">共1页</span> -->
-                                <a id="prePage" class="prev-disabled">上一页</a>
+                                <span id="prepage" class="prev-disabled">上一页<b></b></span>
 
                                 <!-- <span class="prev-disabled">首页</span> -->
-                                <!--<a class="current_page">0</a>&lt;!&ndash; <span class="next-disabled">末页</span>  &ndash;&gt;-->
-                                <a id="nextPage" class="next-disabled">下一页</a>
+                                <!--<a class="current">1</a>&lt;!&ndash; <span class="next-disabled">末页</span>  &ndash;&gt;-->
+                                <span id="nextpage"  class="next-disabled">下一页<b></b></span>
 
                             </div>
                             <div class="clr"></div>
