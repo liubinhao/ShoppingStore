@@ -38,9 +38,7 @@ public class CartController {
      * @return
      */
     @RequestMapping("/showItem")
-    public Object showItem(HttpServletRequest req){
-        String token = req.getHeader("Authentication");
-        System.out.println("token:" + token);
+    public Object showItem(){
         List<?> list = this.iCartService.showItemInformation();
         return ResultWrapper.success(list);
     }
