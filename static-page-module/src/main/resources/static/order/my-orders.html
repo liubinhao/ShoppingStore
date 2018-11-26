@@ -43,18 +43,12 @@
 
         //首页查询
         $.get(url + "/order/findOrderByUserId/1" + "/" + curentpage + "/" + size, orderFind);
-        // $(function () {
-        //     $('OrderSearch').click(function () {
-        //         $.get("/order/findByInfo/1", {info: $('#ip_keyword').val()}, orderFind)
-        //     })
-        // })
-
 
         $('#findById').click(function () {
             //获取Input标的的value值
             var orderId = $('#ip_keyword').val();
             $.get("http://localhost:8775/order/findOrderByOrderId/" + orderId, orderFind)
-            //  $.get("/order/deleteOrder/{orderId}", orderFind)
+
         })
     });
 
@@ -148,13 +142,7 @@
             tbody.append(tr1);
             tbody.append(tr);
             tab.append(tbody);
-            //删除功能
-            // $('#deleteOrder').click(function () {
-            //     var orderId=order.orderId;
-            //     console.log(orderId);
-            //
-            //     // $.get(url + "/order/deleteOrder/" + orderId, orderFind)
-            // });
+
         }
     }
 

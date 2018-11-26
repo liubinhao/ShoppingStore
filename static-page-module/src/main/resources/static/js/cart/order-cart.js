@@ -8,23 +8,23 @@ $('#payPriceId').text(totalPrice);
 
 let url = 'http://localhost:8780/cart/findShoppingList';
 let param = {itemIds: itemList};
-$.get(url, param, shoppingList);
+// $.get(url, param, shoppingList);
 
 
 let param1 = {shipping: shippingList};
 let url1 = 'http://localhost:8775/shipping/findByUserId/1';
-$.get("url1", param1, shippingList);
-
-function shippingList(resp1) {
-    for (var ship = resp1.data){
-      var  name=ship.receiverName;
-      var  phone=ship.receiverPhone;
-      var  city=ship.receiverCity;
-      var  district=ship.receiverDistrict;
-      var  address=ship.receiverAddress;
-      shippingList.append(name).append(phone).append(city).append(district).append(address);
-    }
-}
+// $.get("url1", param1, shippingList);
+//
+// function shippingList(resp1) {
+//     for (var ship = resp1.data){
+//       var  name=ship.receiverName;
+//       var  phone=ship.receiverPhone;
+//       var  city=ship.receiverCity;
+//       var  district=ship.receiverDistrict;
+//       var  address=ship.receiverAddress;
+//       shippingList.append(name).append(phone).append(city).append(district).append(address);
+//     }
+// }
 
 function shoppingList(resp) {
 
